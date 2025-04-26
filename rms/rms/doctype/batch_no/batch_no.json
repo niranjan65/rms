@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{batch_name}",
+ "creation": "2025-01-28 18:33:00.983263",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "batch_name",
+  "customer",
+  "is_bulk",
+  "bulk_name",
+  "physical_screening_check",
+  "rma_allocation_check",
+  "rma_no",
+  "total_quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "batch_name",
+   "fieldtype": "Data",
+   "label": "Batch Name"
+  },
+  {
+   "default": "0",
+   "fieldname": "physical_screening_check",
+   "fieldtype": "Check",
+   "label": "Physical Screening Check"
+  },
+  {
+   "default": "0",
+   "fieldname": "rma_allocation_check",
+   "fieldtype": "Check",
+   "label": "RMA Allocation Check"
+  },
+  {
+   "fieldname": "rma_no",
+   "fieldtype": "Table",
+   "label": "RMA No",
+   "options": "Batch No List"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Data",
+   "label": "Customer"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_bulk",
+   "fieldtype": "Check",
+   "label": "Is Bulk"
+  },
+  {
+   "depends_on": "is_bulk",
+   "fieldname": "bulk_name",
+   "fieldtype": "Data",
+   "label": "Bulk Name"
+  },
+  {
+   "fieldname": "total_quantity",
+   "fieldtype": "Data",
+   "label": "Total Quantity"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-04 15:08:01.812651",
+ "modified_by": "Administrator",
+ "module": "RMS",
+ "name": "Batch No",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

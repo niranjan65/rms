@@ -1,0 +1,126 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{customer}-{##}",
+ "creation": "2025-01-07 16:16:19.250701",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_lo9l",
+  "customer",
+  "location",
+  "section_break_3sqq",
+  "rma_features",
+  "quantity",
+  "generate_unique_id",
+  "rma_details",
+  "customer_prefix",
+  "last_serial_number",
+  "last_batch_number",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_lo9l",
+   "fieldtype": "Section Break",
+   "label": "RMA"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "label": "Location",
+   "options": "Location"
+  },
+  {
+   "fieldname": "section_break_3sqq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rma_details",
+   "fieldtype": "Table",
+   "label": "RMA ID",
+   "options": "RMA ID"
+  },
+  {
+   "fieldname": "generate_unique_id",
+   "fieldtype": "Button",
+   "label": "Generate Unique ID"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "RMA",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "customer_prefix",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Customer Prefix"
+  },
+  {
+   "fieldname": "last_serial_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Last Serial Number"
+  },
+  {
+   "fieldname": "rma_features",
+   "fieldtype": "Table",
+   "label": "RMA Features",
+   "options": "RMA Features"
+  },
+  {
+   "fieldname": "last_batch_number",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Last Batch Number"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-02-04 15:04:22.074504",
+ "modified_by": "Administrator",
+ "module": "RMS",
+ "name": "RMA",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

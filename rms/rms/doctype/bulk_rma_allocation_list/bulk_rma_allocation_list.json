@@ -1,0 +1,40 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2025-02-04 17:42:34.722913",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "techician",
+  "quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "techician",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Techician",
+   "options": "User"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Quantity"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-04-25 09:57:06.688003",
+ "modified_by": "Administrator",
+ "module": "RMS",
+ "name": "Bulk RMA Allocation List",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

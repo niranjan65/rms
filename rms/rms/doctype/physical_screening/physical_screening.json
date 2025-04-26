@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{customer}-{##}",
+ "creation": "2025-01-09 14:17:35.510536",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "batch_no",
+  "is_bulk",
+  "bulk_items",
+  "fetch_rma_list",
+  "screening_items",
+  "is_check"
+ ],
+ "fields": [
+  {
+   "fieldname": "fetch_rma_list",
+   "fieldtype": "Button",
+   "label": "Fetch RMA List"
+  },
+  {
+   "fieldname": "screening_items",
+   "fieldtype": "Table",
+   "label": "Screening Items",
+   "options": "Item Checklist"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "label": "Batch No",
+   "options": "Batch No"
+  },
+  {
+   "default": "0",
+   "depends_on": "batch_no",
+   "fieldname": "is_bulk",
+   "fieldtype": "Check",
+   "label": "Is Bulk"
+  },
+  {
+   "depends_on": "is_bulk",
+   "fieldname": "bulk_items",
+   "fieldtype": "Table",
+   "label": "Bulk Items",
+   "options": "BULK Items"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_check",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Is Check"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-04-25 14:58:42.041465",
+ "modified_by": "Administrator",
+ "module": "RMS",
+ "name": "Physical Screening",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

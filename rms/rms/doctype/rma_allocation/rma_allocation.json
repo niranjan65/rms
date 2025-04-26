@@ -1,0 +1,113 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "RA.####",
+ "creation": "2025-01-10 12:12:35.873587",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "rma_allocated_list_section",
+  "customer",
+  "column_break_n1a6",
+  "batch_no",
+  "section_break_mpct",
+  "isbulk",
+  "total_acquired_quantity",
+  "allocated_quantity",
+  "unallocated_quantity",
+  "bulk_rma_allocation",
+  "rma_allocated_list"
+ ],
+ "fields": [
+  {
+   "fieldname": "rma_allocated_list_section",
+   "fieldtype": "Section Break",
+   "label": "RMA Allocated List"
+  },
+  {
+   "fieldname": "rma_allocated_list",
+   "fieldtype": "Table",
+   "label": "RMA Allocated List",
+   "options": "RMA Assignment"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "default": "0",
+   "fieldname": "isbulk",
+   "fieldtype": "Check",
+   "label": "IsBulk"
+  },
+  {
+   "depends_on": "isbulk",
+   "fieldname": "total_acquired_quantity",
+   "fieldtype": "Int",
+   "label": "Total Acquired Quantity"
+  },
+  {
+   "depends_on": "isbulk",
+   "fieldname": "allocated_quantity",
+   "fieldtype": "Int",
+   "label": "Allocated Quantity"
+  },
+  {
+   "depends_on": "isbulk",
+   "fieldname": "unallocated_quantity",
+   "fieldtype": "Int",
+   "label": "Unallocated Quantity"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "label": "Batch No",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "section_break_mpct",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_n1a6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "isbulk",
+   "fieldname": "bulk_rma_allocation",
+   "fieldtype": "Table",
+   "label": "Bulk RMA Allocation",
+   "options": "Bulk RMA Allocation List"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-04-25 11:07:47.851396",
+ "modified_by": "Administrator",
+ "module": "RMS",
+ "name": "RMA Allocation",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

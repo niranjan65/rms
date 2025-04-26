@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-01-09 14:19:09.783641",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item",
+  "status",
+  "issue",
+  "packing_and_sticker",
+  "unit_cleanliness",
+  "not_rusted",
+  "no_scratch",
+  "scratch",
+  "plug_in",
+  "other",
+  "remark"
+ ],
+ "fields": [
+  {
+   "fieldname": "item",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Ok\nNot Ok"
+  },
+  {
+   "fieldname": "issue",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Issue",
+   "options": "Item Quality Checklist"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "packing_and_sticker",
+   "fieldtype": "Check",
+   "label": "Packing and Sticker"
+  },
+  {
+   "default": "0",
+   "fieldname": "unit_cleanliness",
+   "fieldtype": "Check",
+   "label": "Unit Cleanliness"
+  },
+  {
+   "default": "0",
+   "fieldname": "not_rusted",
+   "fieldtype": "Check",
+   "label": "Not Rusted"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_scratch",
+   "fieldtype": "Check",
+   "label": "No Scratch"
+  },
+  {
+   "default": "0",
+   "fieldname": "scratch",
+   "fieldtype": "Check",
+   "label": "Scratch"
+  },
+  {
+   "default": "0",
+   "fieldname": "plug_in",
+   "fieldtype": "Check",
+   "label": "Plug In "
+  },
+  {
+   "default": "0",
+   "fieldname": "other",
+   "fieldtype": "Check",
+   "label": "Other"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-01-14 10:19:46.993521",
+ "modified_by": "Administrator",
+ "module": "RMS",
+ "name": "Item Checklist",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
