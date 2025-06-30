@@ -11,15 +11,15 @@ app_license = "mit"
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "rms",
-# 		"logo": "/assets/rms/logo.png",
-# 		"title": "RMS",
-# 		"route": "/rms",
-# 		"has_permission": "rms.api.permission.has_app_permission"
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": "rms",
+		"logo": "/assets/rms/logo.png",
+		"title": "RMS",
+		"route": "/app/rms",
+		"has_permission": "erpnext.check_app_permission"
+	}
+]
 
 # Includes in <head>
 # ------------------

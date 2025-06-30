@@ -7,8 +7,10 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "unit_type",
   "id",
-  "batch_no"
+  "batch_no",
+  "sl_no"
  ],
  "fields": [
   {
@@ -22,12 +24,25 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Batch No"
+  },
+  {
+   "fieldname": "sl_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "SL No"
+  },
+  {
+   "fieldname": "unit_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Name",
+   "options": "Item"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-01-27 18:28:19.282167",
+ "modified": "2025-06-11 12:52:42.973290",
  "modified_by": "Administrator",
  "module": "RMS",
  "name": "RMA ID",

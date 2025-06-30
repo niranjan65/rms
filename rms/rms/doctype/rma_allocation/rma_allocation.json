@@ -10,6 +10,7 @@
   "customer",
   "column_break_n1a6",
   "batch_no",
+  "item",
   "section_break_mpct",
   "isbulk",
   "total_acquired_quantity",
@@ -33,6 +34,7 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Customer",
    "options": "Customer"
   },
@@ -63,8 +65,9 @@
   {
    "fieldname": "batch_no",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Batch No",
-   "options": "Batch No"
+   "options": "Batch"
   },
   {
    "fieldname": "section_break_mpct",
@@ -80,11 +83,18 @@
    "fieldtype": "Table",
    "label": "Bulk RMA Allocation",
    "options": "Bulk RMA Allocation List"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-04-25 11:07:47.851396",
+ "modified": "2025-06-24 12:18:47.191010",
  "modified_by": "Administrator",
  "module": "RMS",
  "name": "RMA Allocation",
@@ -100,6 +110,19 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "RMS",
+   "select": 1,
    "share": 1,
    "write": 1
   }

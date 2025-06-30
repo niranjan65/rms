@@ -8,15 +8,18 @@
  "field_order": [
   "section_break_lo9l",
   "customer",
+  "workflow_state",
   "location",
   "section_break_3sqq",
   "rma_features",
   "quantity",
   "generate_unique_id",
+  "guic",
   "rma_details",
   "customer_prefix",
   "last_serial_number",
   "last_batch_number",
+  "batch_generated",
   "amended_from"
  ],
  "fields": [
@@ -43,18 +46,20 @@
   },
   {
    "fieldname": "quantity",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "hidden": 1,
    "label": "Quantity",
    "read_only": 1
   },
   {
+   "allow_bulk_edit": 1,
    "fieldname": "rma_details",
    "fieldtype": "Table",
    "label": "RMA ID",
    "options": "RMA ID"
   },
   {
+   "depends_on": "eval:doc.guic==0;",
    "fieldname": "generate_unique_id",
    "fieldtype": "Button",
    "label": "Generate Unique ID"
@@ -92,12 +97,33 @@
    "fieldtype": "Int",
    "hidden": 1,
    "label": "Last Batch Number"
+  },
+  {
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "options": "Workflow State"
+  },
+  {
+   "default": "0",
+   "fieldname": "batch_generated",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Batch Generated"
+  },
+  {
+   "default": "0",
+   "fieldname": "guic",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Generate Unique Id Check"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-02-04 15:04:22.074504",
+ "modified": "2025-06-24 12:24:36.366943",
  "modified_by": "Administrator",
  "module": "RMS",
  "name": "RMA",
@@ -113,6 +139,31 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "RMS",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Stock User",
    "share": 1,
    "write": 1
   }

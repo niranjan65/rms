@@ -8,7 +8,13 @@
  "field_order": [
   "rma_no_section",
   "rma_no",
-  "batch_no"
+  "batch_no",
+  "serial_no",
+  "material_receipt_done",
+  "physical_screening_done",
+  "rma_allocation_done",
+  "technician",
+  "final_quality_check_done"
  ],
  "fields": [
   {
@@ -20,19 +26,64 @@
    "fieldname": "rma_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "RMA No"
+   "label": "RMA No",
+   "read_only": 1
   },
   {
    "fieldname": "batch_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Batch No"
+   "label": "Batch No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Serial No"
+  },
+  {
+   "default": "0",
+   "fieldname": "material_receipt_done",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Material Receipt Done",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "physical_screening_done",
+   "fieldtype": "Select",
+   "label": "Physical Screening Done",
+   "options": "0\n1\n2",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "rma_allocation_done",
+   "fieldtype": "Check",
+   "label": "RMA Allocation Done ",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "final_quality_check_done",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Final Quality Check Done",
+   "read_only": 1
+  },
+  {
+   "fieldname": "technician",
+   "fieldtype": "Link",
+   "label": "Technician",
+   "options": "Employee"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-01-30 11:56:10.388061",
+ "modified": "2025-06-14 18:45:41.591142",
  "modified_by": "Administrator",
  "module": "RMS",
  "name": "Batch No List",

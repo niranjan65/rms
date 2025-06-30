@@ -1,39 +1,33 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{customer}-{##}",
- "creation": "2025-01-09 14:17:35.510536",
+ "autoname": "format:FQC-{####}",
+ "creation": "2025-04-28 16:10:16.091860",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "workflow_state",
   "customer",
+  "column_break_drdw",
   "batch_no",
   "item",
-  "is_bulk",
-  "bulk_items",
-  "fetch_rma_list",
-  "screening_items",
-  "is_check"
+  "section_break_hpar",
+  "isbulk",
+  "fqc_bulk",
+  "fqc_item",
+  "delivery_quantity",
+  "bulk_quantity"
  ],
  "fields": [
-  {
-   "fieldname": "fetch_rma_list",
-   "fieldtype": "Button",
-   "hidden": 1,
-   "label": "Fetch RMA List"
-  },
-  {
-   "allow_bulk_edit": 1,
-   "fieldname": "screening_items",
-   "fieldtype": "Table",
-   "label": "Screening Items",
-   "options": "Item Checklist"
-  },
   {
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
    "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_drdw",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "batch_no",
@@ -43,26 +37,28 @@
    "options": "Batch"
   },
   {
-   "default": "0",
-   "depends_on": "batch_no",
-   "fieldname": "is_bulk",
-   "fieldtype": "Check",
-   "label": "Is Bulk"
+   "fieldname": "section_break_hpar",
+   "fieldtype": "Section Break"
   },
   {
-   "allow_bulk_edit": 1,
-   "depends_on": "is_bulk",
-   "fieldname": "bulk_items",
+   "default": "0",
+   "fieldname": "isbulk",
+   "fieldtype": "Check",
+   "label": "isBulk"
+  },
+  {
+   "depends_on": "eval:doc.isbulk==1;",
+   "fieldname": "fqc_bulk",
    "fieldtype": "Table",
-   "label": "Bulk Items",
-   "options": "BULK Items"
+   "label": "FQC bulk",
+   "options": "FQC bulk"
   },
   {
-   "default": "0",
-   "fieldname": "is_check",
-   "fieldtype": "Check",
-   "hidden": 1,
-   "label": "Is Check"
+   "depends_on": "eval:doc.isbulk==0;",
+   "fieldname": "fqc_item",
+   "fieldtype": "Table",
+   "label": "FQC Item",
+   "options": "FQC Item"
   },
   {
    "fieldname": "item",
@@ -70,14 +66,31 @@
    "in_list_view": 1,
    "label": "Item",
    "options": "Item"
+  },
+  {
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "delivery_quantity",
+   "fieldtype": "Int",
+   "label": "Delivery Quantity"
+  },
+  {
+   "fieldname": "bulk_quantity",
+   "fieldtype": "Int",
+   "label": "Bulk Quantity"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-23 19:18:03.285853",
+ "modified": "2025-06-24 12:06:32.853941",
  "modified_by": "Administrator",
  "module": "RMS",
- "name": "Physical Screening",
+ "name": "Final Quality Check",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
@@ -102,14 +115,12 @@
    "read": 1,
    "report": 1,
    "role": "RMS",
+   "select": 1,
    "share": 1,
    "write": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
- "track_changes": 1,
- "track_seen": 1,
- "track_views": 1
+ "states": []
 }

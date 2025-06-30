@@ -7,8 +7,10 @@
  "engine": "InnoDB",
  "field_order": [
   "rma_item",
+  "serial_number",
   "remark",
-  "technician"
+  "technician",
+  "is_fqc_done"
  ],
  "fields": [
   {
@@ -29,12 +31,23 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "RMA Item"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "label": "Serial Number"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_fqc_done",
+   "fieldtype": "Check",
+   "label": "Is FQC Done"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-01-13 13:52:08.012958",
+ "modified": "2025-06-05 14:02:25.064033",
  "modified_by": "Administrator",
  "module": "RMS",
  "name": "RMA Assignment",
