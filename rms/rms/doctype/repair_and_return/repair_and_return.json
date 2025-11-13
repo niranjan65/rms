@@ -1,0 +1,126 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-24 12:57:43.382398",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "data_filters_section",
+  "customer",
+  "warranty_status",
+  "rma_id",
+  "column_break_vqat",
+  "lot_no",
+  "circle",
+  "repair_status",
+  "section_break_wilz",
+  "repair_and_return",
+  "section_break_d8mz",
+  "component_used"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "warranty_status",
+   "fieldtype": "Select",
+   "label": "Warranty Status",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "column_break_vqat",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lot_no",
+   "fieldtype": "Link",
+   "label": "Lot No.",
+   "options": "RMA"
+  },
+  {
+   "fieldname": "circle",
+   "fieldtype": "Link",
+   "label": "Circle",
+   "options": "Location"
+  },
+  {
+   "fieldname": "section_break_wilz",
+   "fieldtype": "Section Break",
+   "label": "RMA ID's"
+  },
+  {
+   "fieldname": "repair_and_return",
+   "fieldtype": "Table",
+   "label": "Repair and Return",
+   "options": "Repair and Return Table"
+  },
+  {
+   "fieldname": "section_break_d8mz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "component_used",
+   "fieldtype": "Table",
+   "label": "Component used",
+   "options": "Component Used"
+  },
+  {
+   "fieldname": "data_filters_section",
+   "fieldtype": "Section Break",
+   "label": "Data Filters"
+  },
+  {
+   "fieldname": "rma_id",
+   "fieldtype": "Link",
+   "label": "RMA ID",
+   "options": "RMA BIN"
+  },
+  {
+   "fieldname": "repair_status",
+   "fieldtype": "Link",
+   "label": "Repair Status",
+   "options": "Repair Status"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-09-04 15:51:48.238894",
+ "modified_by": "harpreet.kg@anantdv.com",
+ "module": "RMS",
+ "name": "Repair and Return",
+ "owner": "niranjan.ks@anantdv.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "RMS",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

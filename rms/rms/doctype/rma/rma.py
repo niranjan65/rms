@@ -1,403 +1,532 @@
 # # Copyright (c) 2025, Anantdv and contributors
 # # For license information, please see license.txt
 
-
-import frappe
-from frappe.model.document import Document
-
-class RMA(Document):
-    def before_save(self):
-        if self.workflow_state == "Serial No. Updated":
-            for rma_item in self.get("rma_details" , []):
-                batch_no = rma_item.get("batch_no")
-                rma_no = rma_item.get("id")
-                serial_number = rma_item.get("sl_no")
-                if serial_number:
-                    batch_doc = frappe.get_doc("Batch", batch_no)
-                    batch_doc.custom_rma_id = self.name
-                    for child in batch_doc.get("custom_rma_no", []):
-                        if child.rma_no == rma_no and child.batch_no == batch_no:
-                            child.serial_no = serial_number
-                            batch_doc.save(ignore_permissions=True)
-                            # batch_doc.save()
-            
-                # batch_doc.append("custom_rma_no", {
-                #     "serial_no": serial_number
-                # })
-
-                # if batch_no and rma_no:
-                #     self.update_single_batch(batch_no, rma_no, rma_item, serial_number)
-
-    # def update_single_batch(self, batch_no, rma_no, rma_item, serial_number):
-    #     batch_doc = frappe.get_doc("Batch", batch_no)
-    #     self.name = batch_doc.custom_rma_id
-
-    #     found = False
-
-    #     for row in batch_doc.custom_rma_no:
-    #         if row.rma_no == rma_no:
-    #             row.serial_no = serial_number
-    #             found = True
-    #             break
-
-    #     if found:
-    #         batch_doc.save(ignore_permissions=True)
-    #         frappe.db.commit()
-    #         batch_doc.reload()
-
-
-
-@frappe.whitelist()
-def custom_save(batchNo, serialNumber, rmaNo):
-    if not serialNumber:
-        return
-    batch_doc = frappe.get_doc("Batch", batchNo)
-    # frm.doc.name = batch_doc.custom_rma_id
-    found = False
-
-    for row in batch_doc.custom_rma_no:
-        if row.rma_no == rmaNo:
-            row.serial_no = serialNumber
-            found = True
-            break
-        
-
-    if found:
-        batch_doc.save(ignore_permissions=True)
-        frappe.db.commit()  
-        batch_doc.reload()
-        frappe.msgprint(f"Batch {batchNo} updated successfully with RMA {rmaNo} and Serial No {serialNumber}.")
-
-
-
-
-
-    # def before_save(self):
-    #     if self.workflow_state == "Serial No. Generated":
-            
-    #         self.update_batch_serial_numbers()
-
-    
-
-    # def update_single_batch(self, batch_no, rma_no, rma_item, serial_number):
-    #     batch_doc = frappe.get_doc("Batch", batch_no)
-    #     self.name = batch_doc.custom_rma_id
-
-    #     found = False
-
-    #     for row in batch_doc.custom_rma_no:
-    #         if row.rma_no == rma_no:
-    #             row.serial_no = serial_number
-    #             found = True
-    #             break
-
-    #     if found:
-    #         batch_doc.save(ignore_permissions=True)
-    #         frappe.db.commit()
-    #         batch_doc.reload()
-
-
-         
-            
-
-
-# @frappe.whitelist()
-# def create_batches(items_by_batch, batch_to_item_mapping):
-#     import json
-#     items_by_batch = json.loads(items_by_batch)
-#     batch_to_item_mapping = json.loads(batch_to_item_mapping)
-
-#     created_batches = []
-#     for batch_no in items_by_batch:
-#         batch_doc = frappe.new_doc('Batch')
-
-#         batch_doc.batch_name = batch_no
-#         batch_doc.batch_id = batch_no 
-
-
-#         if batch_no in batch_to_item_mapping:
-#             batch_doc.item = batch_to_item_mapping[batch_no].get("item_code")
-#             batch_doc.custom_total_quantity = batch_to_item_mapping[batch_no].get("quantity")
-
-
-#         batch_doc.custom_rma_no = []
-#         for item in items_by_batch[batch_no]:
-#             batch_doc.append("custom_rma_no", {
-#                 "doctype": "Batch No List",
-#                 "rma_no": item.get("batch_id"),
-#                 "batch_no": item.get("batch_no")
-#             })
-
-#         batch_doc.insert()
-#         created_batches.append(batch_no)
-
-#     return {"status": "success", "created_batches": created_batches}
-# def update_rma(batch,row,col):
-#     pass
-
-
-
-
-
-
 # import frappe
 # from frappe.model.document import Document
 # from frappe import _
 
 # class RMA(Document):
-#     def before_save(self):
-#         if self.workflow_state == "Serial No. Generated":
+#     def validate(self):
+#         # Any validation logic can go here
+#         pass
+    
+#     def on_submit(self):
+       
+#         if not self.material_receipt_created:
+#             self.create_material_receipt()
+#     # def before_save(self):
+#     #     if(self.workflow_state == "Approved") and not self.get_db_value("material_receipt_created"):
+#     #         self.create_material_receipt()
+   
+
+#     def create_material_receipt(self):
+#         """Create Material Receipt when RMA is approved"""
+#         try:
+#             # Validate required fields - THROW ERRORS if missing
+#             if not self.rma_features:
+#                 frappe.throw(_("No items found in RMA Features to create Material Receipt"))
             
-#             self.update_batch_serial_numbers()
-
-#     def update_batch_serial_numbers(self):
-#         for rma_item in self.get("rma_details" , []):
-#             batch_no = rma_item.get("batch_no")
-#             rma_no = rma_item.get("id")
-#             serial_number = rma_item.get("sl_no")
-
-#             if batch_no and rma_no:
-                
-#                 self.update_single_batch(batch_no, rma_no, rma_item, serial_number)
-
-#     def update_single_batch(self, batch_no, rma_no, rma_item, serial_number):
-#         batch_doc = frappe.get_doc("Batch", batch_no)
-#         self.name = batch_doc.custom_rma_id
-
-#         found = False
-
-#         for row in batch_doc.custom_rma_no:
-#             if row.rma_no == rma_no:
-#                 row.serial_no = serial_number
-#                 found = True
-#                 break
-
-#         if found:
-#             batch_doc.save(ignore_permissions=True)
-#             frappe.db.commit()
-#             batch_doc.reload()
-
-
-#     def generate_batches(self):
-#         """Convert JavaScript generateBatches function to Python"""
-        
-#         # Step 1: Map item types to quantities
-#         items_map = {}
-#         if self.get("rma_features"):
-#             for feature in self.get("rma_features"):
-#                 items_map[feature.unit_type] = {
-#                     "quantity": int(feature.quantity or 0),
-#                     "isbulk": feature.isbulk
-#                 }
-        
-#         frappe.logger().info(f"Items map: {items_map}")
-
-#         # Step 2: Group RMA IDs by batch number
-#         items_by_batch = {}
-#         for item in self.get("rma_details", []):
-#             batch_no = item.batch_no
-#             if batch_no not in items_by_batch:
-#                 items_by_batch[batch_no] = []
-#             items_by_batch[batch_no].append(item)
-
-#         completed_batches = 0
-#         batch_exists_count = 0
-#         frappe.logger().info(f"Items grouped by batch: {items_by_batch}")
-
-#         # Step 3: Map batch numbers to unit types from rma_features
-#         batch_to_item_mapping = {}
-#         batch_numbers = sorted(items_by_batch.keys())
-        
-#         for index, feature in enumerate(self.get("rma_features", [])):
-#             if index < len(batch_numbers):
-#                 batch_no = batch_numbers[index]
-#                 batch_to_item_mapping[batch_no] = {
-#                     "item_code": feature.unit_type,
-#                     "quantity": int(feature.quantity or 0),
-#                     "isbulk": feature.isbulk
-#                 }
-
-#         frappe.logger().info(f"Batch to item mapping: {batch_to_item_mapping}")
-
-#         # Step 4: Create Batch documents
-#         total_batches = len(items_by_batch)
-#         created_batches = []
-#         existing_batches = []
-        
-#         for batch_no, items in items_by_batch.items():
-#             frappe.logger().info(f"Processing batch: {batch_no}")
+#             if not self.warehouse:
+#                 frappe.throw(_("Warehouse is required to create Material Receipt"))
             
-#             # Check if batch already exists
-#             if frappe.db.exists("Batch", batch_no):
-#                 batch_exists_count += 1
-#                 existing_batches.append(batch_no)
-#                 frappe.logger().info(f"Batch already exists for: {batch_no}, skipping creation.")
-#                 continue
-
+#             if not self.customer:
+#                 frappe.throw(_("Customer is required to create Material Receipt"))
+            
+#             # Create new Stock Entry document
+#             stock_entry = frappe.new_doc("Stock Entry")
+#             stock_entry.stock_entry_type = "Material Receipt"
+#             stock_entry.company = "Ductus Technologies Pvt. Ltd."
+#             stock_entry.custom_customer = self.customer
+#             stock_entry.posting_date = frappe.utils.today()
+#             stock_entry.posting_time = frappe.utils.nowtime()
+#             stock_entry.custom_rma_reference = self.name
+#             stock_entry.lod_no = self.name
+#             stock_entry.remarks = f"Material Receipt created from RMA: {self.name}"
+            
+#             # Add items from RMA Features
+#             valid_items = 0
+#             for feature in self.rma_features:
+#                 if feature.model:  # Using Model field as requested
+#                     try:
+#                         # Get item details - this will throw error if item doesn't exist
+#                         item_details = frappe.get_doc("Item", feature.model)
+                        
+#                         # Create stock entry detail
+#                         stock_entry.append("items", {
+#                             "item_code": feature.model,
+#                             "item_name": item_details.item_name,
+#                             "description": item_details.description,
+#                             "uom": "Pack",  
+#                             "stock_uom": item_details.stock_uom,
+#                             "qty": 1,  
+#                             "basic_rate": 0,  
+#                             "basic_amount": 0,
+#                             "t_warehouse": self.warehouse,  # Target warehouse from RMA
+#                             # "serial_no": feature.serial_no if feature.serial_no else "",
+#                             "conversion_factor": 1,
+#                             "allow_zero_valuation_rate": 1,  # This is the key fix
+#                         })
+#                         valid_items += 1
+                        
+#                     except frappe.DoesNotExistError:
+#                         frappe.throw(_("Item {0} does not exist in the system").format(feature.model))
+#                 else:
+#                     frappe.throw(_("Model field is empty in RMA Features row {0}").format(feature.idx))
+            
+#             # Validate that we have items to add
+#             if valid_items == 0:
+#                 frappe.throw(_("No valid items found from Model field in RMA Features"))
+            
+#             # Validate warehouse exists
+#             if not frappe.db.exists("Warehouse", self.warehouse):
+#                 frappe.throw(_("Warehouse {0} does not exist").format(self.warehouse))
+            
+#             # Insert the stock entry first
+#             stock_entry.insert()
+            
+#             # Try to submit, but handle valuation rate errors gracefully
 #             try:
-#                 # Create new Batch document
-#                 batch_doc = frappe.new_doc("Batch")
-#                 frappe.logger().info(f"Creating Batch for: {batch_no}")
+#                 stock_entry.submit()
+#                 status_msg = "created and submitted"
+#             except Exception as submit_error:
+#                 # If submit fails due to valuation rate, that's okay - leave it in draft
+#                 if "Valuation Rate" in str(submit_error):
+#                     status_msg = "created in draft status (please set valuation rates and submit manually)"
+#                 else:
+#                     # For other submission errors, throw them
+#                     frappe.throw(_("Failed to submit Material Receipt: {0}").format(str(submit_error)))
+            
+#             # Update RMA to mark material receipt as created
+#             self.db_set("material_receipt_created", stock_entry.name)
 
-#                 # Set basic batch fields
-#                 batch_doc.custom_customer = self.customer
-#                 batch_doc.batch_name = batch_no
-#                 batch_doc.batch_id = batch_no
-#                 batch_doc.id = batch_no
+#             # Create RMA BIN documents for each row in RMA Features
+#             self.create_rma_bin_documents()
+            
+#             # # Show success message
+#             # frappe.msgprint(
+#             #     _("Material Receipt {0} {1}!").format(stock_entry.name, status_msg),
+#             #     title=_("Success"),
+#             #     indicator="green"
+#             # )
+            
+#             return stock_entry.name
+            
+#         except Exception as e:
+#             # Log the detailed error
+#             frappe.log_error(f"Material Receipt creation failed for RMA {self.name}", str(e))
+            
+#             # Re-throw the error to stop the workflow
+#             frappe.throw(_("Failed to create Material Receipt: {0}").format(str(e)))
 
-#                 # Add item and quantity from rma_features mapping
-#                 if batch_no in batch_to_item_mapping:
-#                     mapping = batch_to_item_mapping[batch_no]
-#                     frappe.logger().info(f"Batch to item mapping found for: {mapping.get('isbulk')}")
+#     def create_rma_bin_documents(self):
+#         """Create RMA BIN documents for each row in RMA Features"""
+#         try:
+#             # Check if RMA BIN doctype exists
+#             if not frappe.db.exists("DocType", "RMA BIN"):
+#                 frappe.msgprint("RMA BIN doctype not found. Please create the doctype first.", indicator="red")
+#                 return
+            
+#             rma_bin_count = 0
+#             failed_count = 0
+            
+#             # Loop through each row in RMA Features child table
+#             for feature in self.rma_features:
+#                 try:
+#                     # Check if this feature has rma_id (required for naming)
+#                     rma_id = getattr(feature, 'rma_id', '')
+#                     if not rma_id:
+#                         # frappe.msgprint(f"Row {feature.idx}: No RMA ID found. Skipping.", indicator="orange")
+#                         failed_count += 1
+#                         continue
                     
-#                     batch_doc.item = mapping["item_code"]
-#                     batch_doc.custom_is_bulk = mapping.get("isbulk")
-#                     batch_doc.custom_total_quantity = mapping["quantity"]
-#                     batch_doc.batch_qty = mapping["quantity"]
+#                     # Check if RMA BIN with this rma_id already exists
+#                     if frappe.db.exists("RMA BIN", rma_id):
+#                         # frappe.msgprint(f"RMA BIN {rma_id} already exists. Skipping.", indicator="orange")
+#                         failed_count += 1
+#                         continue
+                    
+#                     # Create new RMA BIN document
+#                     rma_bin = frappe.new_doc("RMA BIN")
+                    
+#                     # Set fields safely - avoid any object assignment issues
+#                     if rma_id:
+#                         rma_bin.rma_id = str(rma_id)
 
-#                 # Add RMA numbers to the batch
-#                 for item in items:
-#                     batch_doc.append("custom_rma_no", {
-#                         "rma_no": item.id,
-#                         "batch_no": item.batch_no,
-#                         "serial_no": getattr(item, 'sl_no', None)
-#                     })
+#                     # if repair_status:
+#                     #     rma_bin.fault_found = repair_status
+                    
+#                     if self.customer:
+#                         rma_bin.customer = str(self.customer)
+                    
+#                     rma_bin.lot_no = self.name
+                    
+#                     # Set other fields from RMA Features safely
+#                     # make_val = getattr(feature, 'make', '')
+#                     make_val = getattr(feature, 'brand', '')
+#                     if make_val:
+#                         rma_bin.make = str(make_val)
+                    
+#                     model_val = getattr(feature, 'model', '')
+#                     if model_val:
+#                         rma_bin.model_no = str(model_val)
+                    
+#                     part_no_val = getattr(feature, 'part_no', '')
+#                     if part_no_val:
+#                         rma_bin.part_no = str(part_no_val)
+                    
+#                     serial_no_val = getattr(feature, 'serial_no', '')
+#                     if serial_no_val:
+#                         rma_bin.serial_no = str(serial_no_val)
+                    
+#                     warranty_val = getattr(feature, 'warranty_status', '')
+#                     if warranty_val:
+#                         rma_bin.warranty_status = str(warranty_val)
+                    
+#                     remarks_val = getattr(feature, 'receiving_remarks', '')
+#                     if remarks_val:
+#                         rma_bin.receiving_remarks = str(remarks_val)
+                    
+#                     repair_val = getattr(feature, 'repair_status', '')
+#                     if repair_val:
+#                         rma_bin.repair_status = str(repair_val)
+                    
+#                     # Set dates and other fields
+#                     rma_bin.receiving_date = frappe.utils.today()
+                    
+#                     # Set reference fields safely
+#                     material_receipt_ref = getattr(self, 'material_receipt_created', '')
+#                     if material_receipt_ref:
+#                         rma_bin.material_receipt = str(material_receipt_ref)
+                    
+#                     customer_addr = getattr(self, 'customer_address', '')
+#                     if customer_addr:
+#                         rma_bin.customer_address = str(customer_addr)
+                    
+#                     challan_no = getattr(self, 'delivery_challan_no', '')
+#                     if challan_no:
+#                         rma_bin.delivery_challan_no = str(challan_no)
 
-#                 # Save the batch document
-#                 batch_doc.insert(ignore_permissions=True)
-#                 frappe.db.commit()
+#                     lr_no = getattr(self, 'lr_no', '')
+#                     if lr_no:
+#                         rma_bin.lr_no = str(lr_no)
+
+#                     circle_location = getattr(self, 'location', '')
+#                     if circle_location:
+#                         rma_bin.circle = str(circle_location)
+
+#                     warehouse = getattr(self, 'warehouse', '')
+#                     if warehouse:
+#                         rma_bin.warehouse = str(warehouse)
+
+#                     if feature.repair_status:
+#                         rma_bin.rma_id_status = feature.repair_status
+
+
+#                     if feature.repair_status:
+#                         rma_bin.append('rma_status', {
+#                             'repair_status': feature.repair_status,
+#                             'timestamp': feature.modified
+#                         })
+
+#                     # rma_bin.append('rma_status', {
+#                     #     'repair_status': feature.repair_status,
+#                     #     'timestamp': feature.modified
+#                     #     })
+
+#                     if feature.remarks:
+#                         rma_bin.append('remarks', {
+#                             'repair_remarks': feature.remarks,
+#                             'timestamp': feature.modified
+#                         })
+#                     # Insert the document
+#                     rma_bin.insert(ignore_permissions=True)
+#                     rma_bin_count += 1
+                    
+#                     # frappe.msgprint(f"Created RMA BIN: {rma_bin.name} for row {feature.idx}", indicator="green")
+                    
+#                 except Exception as row_error:
+#                     failed_count += 1
+#                     error_type = type(row_error).__name__
+#                     error_message = str(row_error)
+                    
+#                     # Show detailed error information
+#                     # frappe.msgprint(f"Row {feature.idx}: Failed to create RMA BIN - {error_type}: {error_message}", indicator="red")
+                    
+#                     # Handle specific error types
+#                     if "UniqueValidationError" in error_type or "IntegrityError" in str(row_error):
+#                         if "customer" in str(row_error):
+#                             frappe.msgprint(f"Row {feature.idx}: Customer constraint issue. Please remove unique constraint from Customer field.", indicator="red")
+#                         else:
+#                             frappe.msgprint(f"Row {feature.idx}: Duplicate entry detected. Skipping.", indicator="orange")
+#                     elif "TypeError" in error_type:
+#                         frappe.msgprint(f"Row {feature.idx}: Field type mismatch. Check if all required fields exist in RMA BIN doctype.", indicator="red")
+#                     else:
+#                         frappe.msgprint(f"Row {feature.idx}: Failed to create RMA BIN - {error_type}", indicator="orange")
+                    
+#                     continue  # Skip this row and continue with others
+            
+#             # Show final summary message
+#             total_rows = len(self.rma_features)
+#             # if rma_bin_count > 0:
+#             #     frappe.msgprint(
+#             #         f"Successfully created {rma_bin_count} out of {total_rows} RMA BIN documents.",
+#             #         title="RMA BIN Creation Summary",
+#             #         indicator="green" if failed_count == 0 else "blue"
+#             #     )
+#             # elif failed_count > 0:
+#             #     frappe.msgprint(
+#             #         f"Failed to create all {total_rows} RMA BIN documents. Check for issues above.",
+#             #         title="RMA BIN Creation Failed",
+#             #         indicator="orange"
+#             #     )
                 
-#                 completed_batches += 1
-#                 created_batches.append(batch_no)
-#                 frappe.logger().info(f"✅ Batch created for: {batch_no}")
-                
-#             except Exception as e:
-#                 frappe.logger().error(f"❌ Error creating batch {batch_no}: {str(e)}")
-#                 frappe.throw(_("An error occurred while creating batch {0}: {1}").format(batch_no, str(e)))
-
-#         # Set form properties
-#         self.db_set("guic", 1)
-        
-#         # Return results for feedback
-#         result = {
-#             "total_batches": total_batches,
-#             "created_batches": len(created_batches),
-#             "existing_batches": len(existing_batches),
-#             "created_batch_list": created_batches,
-#             "existing_batch_list": existing_batches
-#         }
-        
-#         # Log completion status
-#         if existing_batches:
-#             if len(existing_batches) == total_batches:
-#                 frappe.logger().info("All batches already exist")
-#                 frappe.msgprint(
-#                     _("All batches for this RMA already exist."),
-#                     title=_("Batches Already Exist"),
-#                     indicator="orange"
-#                 )
-#             else:
-#                 frappe.logger().info(f"Created {len(created_batches)} new batches, {len(existing_batches)} already existed")
-#                 frappe.msgprint(
-#                     _("Created {0} new batches. {1} batches already existed.").format(
-#                         len(created_batches), len(existing_batches)
-#                     ),
-#                     title=_("Batch Creation Complete"),
-#                     indicator="blue"
-#                 )
-#         else:
-#             frappe.logger().info(f"Successfully created all {len(created_batches)} batches")
+#         except Exception as e:
 #             frappe.msgprint(
-#                 _("Successfully created {0} batches.").format(len(created_batches)),
-#                 title=_("Batch Creation Complete"),
-#                 indicator="green"
+#                 "Failed to create RMA BIN documents. Check console for details.",
+#                 title="RMA BIN Creation Error",
+#                 indicator="orange"
 #             )
-        
-#         return result
 
-#     def filter_rma_features_with_created_batches(self):
-#         """Python equivalent of filterRMAFeaturesWithCreatedBatches"""
-        
-#         if not self.get("rma_details"):
-#             return
-
-#         # Get all unique batch numbers from rma_details
-#         batch_numbers = list(set([item.batch_no for item in self.get("rma_details", [])]))
-        
-#         # Map batch numbers to unit types from rma_details
-#         batch_to_unit_type = {}
-#         for item in self.get("rma_details", []):
-#             if item.batch_no not in batch_to_unit_type and item.unit_type:
-#                 batch_to_unit_type[item.batch_no] = item.unit_type
-
-#         # Check which batches exist
-#         created_batches = []
-#         for batch_no in batch_numbers:
-#             if frappe.db.exists("Batch", batch_no):
-#                 created_batches.append(batch_no)
-
-#         if not created_batches:
-#             return
-
-#         # Get unit types that have created batches
-#         unit_types_with_batches = [
-#             batch_to_unit_type[batch] for batch in created_batches 
-#             if batch in batch_to_unit_type
-#         ]
-
-#         if not unit_types_with_batches:
-#             return
-
-#         # Filter rma_features to show only rows with created batches
-#         original_features = self.get("rma_features", [])
-#         filtered_features = [
-#             feature for feature in original_features 
-#             if feature.unit_type in unit_types_with_batches
-#         ]
-
-#         # Clear and repopulate the table
-#         self.set("rma_features", [])
-        
-#         for feature in filtered_features:
-#             self.append("rma_features", {
-#                 "unit_type": feature.unit_type,
-#                 "quantity": feature.quantity,
-#                 "isbulk": getattr(feature, 'isbulk', None),
-#                 # Add other fields as needed
-#             })
-
-#         frappe.logger().info(f"Filtered RMA features: showing {len(filtered_features)} rows with created batches")
-        
-#         return len(filtered_features)
-
-# # Method to call from client-side (JavaScript)
-# @frappe.whitelist()
-# def generate_batches_for_rma(rma_name):
-#     """Server method to generate batches for RMA"""
     
-#     if not rma_name:
-#         frappe.throw(_("RMA name is required"))
-    
-#     try:
-#         rma_doc = frappe.get_doc("RMA", rma_name)
-#         result = rma_doc.generate_batches()
-        
-#         # Also filter the features table
-#         rma_doc.filter_rma_features_with_created_batches()
-#         rma_doc.save(ignore_permissions=True)
-        
-#         return result
-        
-#     except Exception as e:
-#         frappe.logger().error(f"Error in generate_batches_for_rma: {str(e)}")
-#         frappe.throw(_("Failed to generate batches: {0}").format(str(e)))
 
-# # Alternative: Direct method call from button
-# @frappe.whitelist()
-# def create_rma_batches(doc, method=None):
-#     """Method that can be called from a custom button or workflow action"""
+
+
+
+
+
+# Copyright (c) 2025, Anantdv and contributors
+# For license information, please see license.txt
+
+import frappe
+from frappe.model.document import Document
+from frappe import _
+
+class RMA(Document):
+    def validate(self):
+        # Any validation logic can go here
+        pass
     
-#     if isinstance(doc, str):
-#         doc = frappe.get_doc("RMA", doc)
-    
-#     return doc.generate_batches()
+    def on_submit(self):
+        # Set the date to current date/time when document is submitted
+        self.db_set('date', frappe.utils.today())
+        
+        if not self.material_receipt_created:
+            self.create_material_receipt()
+   
+    def create_material_receipt(self):
+        """Create Material Receipt when RMA is approved"""
+        try:
+            # Validate required fields - THROW ERRORS if missing
+            if not self.rma_features:
+                frappe.throw(_("No items found in RMA Features to create Material Receipt"))
+            
+            if not self.warehouse:
+                frappe.throw(_("Warehouse is required to create Material Receipt"))
+            
+            if not self.customer:
+                frappe.throw(_("Customer is required to create Material Receipt"))
+            
+            # Create new Stock Entry document
+            stock_entry = frappe.new_doc("Stock Entry")
+            stock_entry.stock_entry_type = "Material Receipt"
+            stock_entry.company = "Ductus Technologies Pvt. Ltd."
+            stock_entry.custom_customer = self.customer
+            stock_entry.posting_date = frappe.utils.today()
+            stock_entry.posting_time = frappe.utils.nowtime()
+            stock_entry.custom_rma_reference = self.name
+            stock_entry.lod_no = self.name
+            stock_entry.remarks = f"Material Receipt created from RMA: {self.name}"
+            
+            # Add items from RMA Features
+            valid_items = 0
+            for feature in self.rma_features:
+                if feature.model:  # Using Model field as requested
+                    try:
+                        # Get item details - this will throw error if item doesn't exist
+                        item_details = frappe.get_doc("Item", feature.model)
+                        
+                        # Create stock entry detail
+                        stock_entry.append("items", {
+                            "item_code": feature.model,
+                            "item_name": item_details.item_name,
+                            "description": item_details.description,
+                            "uom": "Pack",  
+                            "stock_uom": item_details.stock_uom,
+                            "qty": 1,  
+                            "basic_rate": 0,  
+                            "basic_amount": 0,
+                            "t_warehouse": self.warehouse,  # Target warehouse from RMA
+                            # "serial_no": feature.serial_no if feature.serial_no else "",
+                            "conversion_factor": 1,
+                            "allow_zero_valuation_rate": 1,  # This is the key fix
+                        })
+                        valid_items += 1
+                        
+                    except frappe.DoesNotExistError:
+                        frappe.throw(_("Item {0} does not exist in the system").format(feature.model))
+                else:
+                    frappe.throw(_("Model field is empty in RMA Features row {0}").format(feature.idx))
+            
+            # Validate that we have items to add
+            if valid_items == 0:
+                frappe.throw(_("No valid items found from Model field in RMA Features"))
+            
+            # Validate warehouse exists
+            if not frappe.db.exists("Warehouse", self.warehouse):
+                frappe.throw(_("Warehouse {0} does not exist").format(self.warehouse))
+            
+            # Insert the stock entry first
+            stock_entry.insert()
+            
+            # Try to submit, but handle valuation rate errors gracefully
+            try:
+                stock_entry.submit()
+                status_msg = "created and submitted"
+            except Exception as submit_error:
+                # If submit fails due to valuation rate, that's okay - leave it in draft
+                if "Valuation Rate" in str(submit_error):
+                    status_msg = "created in draft status (please set valuation rates and submit manually)"
+                else:
+                    # For other submission errors, throw them
+                    frappe.throw(_("Failed to submit Material Receipt: {0}").format(str(submit_error)))
+            
+            # Update RMA to mark material receipt as created
+            self.db_set("material_receipt_created", stock_entry.name)
+
+            # Create RMA BIN documents for each row in RMA Features
+            self.create_rma_bin_documents()
+            
+            return stock_entry.name
+            
+        except Exception as e:
+            # Log the detailed error
+            frappe.log_error(f"Material Receipt creation failed for RMA {self.name}", str(e))
+            
+            # Re-throw the error to stop the workflow
+            frappe.throw(_("Failed to create Material Receipt: {0}").format(str(e)))
+
+    def create_rma_bin_documents(self):
+        """Create RMA BIN documents for each row in RMA Features"""
+        try:
+            # Check if RMA BIN doctype exists
+            if not frappe.db.exists("DocType", "RMA BIN"):
+                frappe.msgprint("RMA BIN doctype not found. Please create the doctype first.", indicator="red")
+                return
+            
+            rma_bin_count = 0
+            failed_count = 0
+            
+            # Loop through each row in RMA Features child table
+            for feature in self.rma_features:
+                try:
+                    # Check if this feature has rma_id (required for naming)
+                    rma_id = getattr(feature, 'rma_id', '')
+                    if not rma_id:
+                        failed_count += 1
+                        continue
+                    
+                    # Check if RMA BIN with this rma_id already exists
+                    if frappe.db.exists("RMA BIN", rma_id):
+                        failed_count += 1
+                        continue
+                    
+                    # Create new RMA BIN document
+                    rma_bin = frappe.new_doc("RMA BIN")
+                    
+                    # Set fields safely - avoid any object assignment issues
+                    if rma_id:
+                        rma_bin.rma_id = str(rma_id)
+                    
+                    if self.customer:
+                        rma_bin.customer = str(self.customer)
+                    
+                    rma_bin.lot_no = self.name
+                    
+                    # Set other fields from RMA Features safely
+                    make_val = getattr(feature, 'brand', '')
+                    if make_val:
+                        rma_bin.make = str(make_val)
+                    
+                    model_val = getattr(feature, 'model', '')
+                    if model_val:
+                        rma_bin.model_no = str(model_val)
+                    
+                    part_no_val = getattr(feature, 'part_no', '')
+                    if part_no_val:
+                        rma_bin.part_no = str(part_no_val)
+                    
+                    serial_no_val = getattr(feature, 'serial_no', '')
+                    if serial_no_val:
+                        rma_bin.serial_no = str(serial_no_val)
+                    
+                    warranty_val = getattr(feature, 'warranty_status', '')
+                    if warranty_val:
+                        rma_bin.warranty_status = str(warranty_val)
+                    
+                    remarks_val = getattr(feature, 'receiving_remarks', '')
+                    if remarks_val:
+                        rma_bin.receiving_remarks = str(remarks_val)
+                    
+                    repair_val = getattr(feature, 'repair_status', '')
+                    if repair_val:
+                        rma_bin.repair_status = str(repair_val)
+                    
+                    # Set receiving_date to the submission date (today when submitted)
+                    rma_bin.receiving_date = frappe.utils.today()
+                    
+                    # Set reference fields safely
+                    material_receipt_ref = getattr(self, 'material_receipt_created', '')
+                    if material_receipt_ref:
+                        rma_bin.material_receipt = str(material_receipt_ref)
+                    
+                    customer_addr = getattr(self, 'customer_address', '')
+                    if customer_addr:
+                        rma_bin.customer_address = str(customer_addr)
+                    
+                    challan_no = getattr(self, 'delivery_challan_no', '')
+                    if challan_no:
+                        rma_bin.delivery_challan_no = str(challan_no)
+
+                    lr_no = getattr(self, 'lr_no', '')
+                    if lr_no:
+                        rma_bin.lr_no = str(lr_no)
+
+                    circle_location = getattr(self, 'location', '')
+                    if circle_location:
+                        rma_bin.circle = str(circle_location)
+
+                    warehouse = getattr(self, 'warehouse', '')
+                    if warehouse:
+                        rma_bin.warehouse = str(warehouse)
+
+                    if feature.repair_status:
+                        rma_bin.rma_id_status = feature.repair_status
+
+                    if feature.repair_status:
+                        rma_bin.append('rma_status', {
+                            'repair_status': feature.repair_status,
+                            'timestamp': frappe.utils.now_datetime()
+                        })
+
+                    if feature.remarks:
+                        rma_bin.append('remarks', {
+                            'repair_remarks': feature.remarks,
+                            'timestamp': frappe.utils.now_datetime()
+                        })
+                    
+                    # Insert the document
+                    rma_bin.insert(ignore_permissions=True)
+                    rma_bin_count += 1
+                    
+                except Exception as row_error:
+                    failed_count += 1
+                    error_type = type(row_error).__name__
+                    error_message = str(row_error)
+                    continue  # Skip this row and continue with others
+                
+        except Exception as e:
+            frappe.msgprint(
+                "Failed to create RMA BIN documents. Check console for details.",
+                title="RMA BIN Creation Error",
+                indicator="orange"
+            )

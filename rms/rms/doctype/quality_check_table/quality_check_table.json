@@ -1,0 +1,188 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-31 15:40:47.180926",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "lot_no",
+  "rma_id",
+  "assigned_to",
+  "assigned_to_name",
+  "customer",
+  "receiving_remarks",
+  "serial_no",
+  "warranty_status",
+  "repair_remarks",
+  "repair_status",
+  "quality_check_assign_to",
+  "quality_check_date",
+  "quality_check_done_date",
+  "quality_check_approved",
+  "quality_check_done",
+  "quality_check_pass",
+  "employee_name",
+  "quality_check_assigned_to_name",
+  "tat",
+  "receiving_date"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "lot_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lot No.",
+   "options": "RMA"
+  },
+  {
+   "columns": 2,
+   "fieldname": "rma_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "RMA ID",
+   "options": "RMA BIN"
+  },
+  {
+   "columns": 4,
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Repaired By",
+   "options": "Employee"
+  },
+  {
+   "columns": 2,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "columns": 5,
+   "fieldname": "receiving_remarks",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Receiving Remarks",
+   "options": "Damages"
+  },
+  {
+   "columns": 2,
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Serial No."
+  },
+  {
+   "columns": 3,
+   "fieldname": "warranty_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Warranty Status",
+   "options": "\nYes\nNo"
+  },
+  {
+   "columns": 3,
+   "fieldname": "repair_remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Repair Remarks"
+  },
+  {
+   "columns": 4,
+   "default": "0",
+   "fieldname": "quality_check_approved",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Quality Check Approved"
+  },
+  {
+   "columns": 4,
+   "fieldname": "quality_check_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Quality Check Assign Date"
+  },
+  {
+   "columns": 5,
+   "fieldname": "quality_check_assign_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Quality Check Assigned to",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "quality_check_assigned_to_name",
+   "fieldtype": "Data",
+   "label": "Quality Check Assigned To Name"
+  },
+  {
+   "default": "0",
+   "fieldname": "quality_check_done",
+   "fieldtype": "Check",
+   "label": "Quality Check Done"
+  },
+  {
+   "fieldname": "quality_check_pass",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Quality Check Pass",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "repair_status",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Repair Status",
+   "options": "Repair Status"
+  },
+  {
+   "columns": 7,
+   "fieldname": "assigned_to_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Assigned To Name"
+  },
+  {
+   "columns": 1,
+   "fieldname": "tat",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "TAT"
+  },
+  {
+   "fieldname": "receiving_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Receiving Date"
+  },
+  {
+   "columns": 4,
+   "fieldname": "quality_check_done_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Quality Check Done date"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-04 17:15:27.309675",
+ "modified_by": "harpreet.kg@anantdv.com",
+ "module": "RMS",
+ "name": "Quality Check table",
+ "owner": "shresthangsu.c@anantdv.com",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

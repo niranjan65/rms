@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-07 18:50:15.824408",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "data_filters_section",
+  "technician",
+  "customer",
+  "warranty_status",
+  "repair_status",
+  "column_break_8fkd",
+  "lot_no",
+  "circle",
+  "rma_id",
+  "section_break_cmu9",
+  "quality_check_technician_view_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "technician",
+   "fieldtype": "Data",
+   "label": "Technician "
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "warranty_status",
+   "fieldtype": "Select",
+   "label": " Warranty Status",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "column_break_8fkd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lot_no",
+   "fieldtype": "Link",
+   "label": "Lot No.",
+   "options": "RMA"
+  },
+  {
+   "fieldname": "circle",
+   "fieldtype": "Link",
+   "label": "Circle",
+   "options": "Location"
+  },
+  {
+   "fieldname": "section_break_cmu9",
+   "fieldtype": "Section Break",
+   "label": "RMA ID's"
+  },
+  {
+   "fieldname": "quality_check_technician_view_table",
+   "fieldtype": "Table",
+   "label": "Quality Check Technician View Table",
+   "options": "Quality Check Technician view Table"
+  },
+  {
+   "fieldname": "data_filters_section",
+   "fieldtype": "Section Break",
+   "label": "Data Filters"
+  },
+  {
+   "fieldname": "repair_status",
+   "fieldtype": "Link",
+   "label": "Repair Status",
+   "options": "Repair Status"
+  },
+  {
+   "fieldname": "rma_id",
+   "fieldtype": "Link",
+   "label": "RMA ID",
+   "options": "RMA BIN"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-09-04 17:11:57.843134",
+ "modified_by": "harpreet.kg@anantdv.com",
+ "module": "RMS",
+ "name": "Quality Check Technician View",
+ "owner": "harpreet.kg@anantdv.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

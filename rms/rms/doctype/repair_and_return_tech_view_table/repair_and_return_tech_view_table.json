@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-06 13:01:29.358452",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "lot_no",
+  "rma_id",
+  "assigned_to",
+  "assigned_to_name",
+  "customer",
+  "model_no",
+  "part_no",
+  "serial_no",
+  "assigned_date",
+  "repaired_date",
+  "select_components",
+  "component_used",
+  "create_material_receipt",
+  "fault_found",
+  "repair_remarks",
+  "repair_status",
+  "material_receipt",
+  "employee_name",
+  "receiving_date",
+  "tat"
+ ],
+ "fields": [
+  {
+   "columns": 4,
+   "fieldname": "lot_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lot No.",
+   "options": "RMA"
+  },
+  {
+   "fieldname": "rma_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "RMA ID"
+  },
+  {
+   "columns": 7,
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assigned To",
+   "options": "Employee"
+  },
+  {
+   "columns": 4,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "model_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Model No.",
+   "options": "Item"
+  },
+  {
+   "fieldname": "part_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Part No",
+   "options": "Item"
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Serial No"
+  },
+  {
+   "default": "Today",
+   "fieldname": "assigned_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Assign Date "
+  },
+  {
+   "columns": 4,
+   "fieldname": "select_components",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "Select Components"
+  },
+  {
+   "columns": 4,
+   "fieldname": "component_used",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Component Used "
+  },
+  {
+   "columns": 4,
+   "fieldname": "create_material_receipt",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "Create Material Request"
+  },
+  {
+   "fieldname": "fault_found",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fault Found ",
+   "options": "Fault Found"
+  },
+  {
+   "columns": 3,
+   "fieldname": "repair_remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Repair Remarks"
+  },
+  {
+   "columns": 3,
+   "fieldname": "material_receipt",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Material Receipt"
+  },
+  {
+   "fieldname": "repair_status",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Repair Status",
+   "options": "Repair Status"
+  },
+  {
+   "columns": 7,
+   "fieldname": "assigned_to_name",
+   "fieldtype": "Data",
+   "label": "Assigned To Name"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "columns": 1,
+   "fieldname": "tat",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "TAT"
+  },
+  {
+   "fieldname": "repaired_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Repaired Date"
+  },
+  {
+   "fieldname": "receiving_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Receiving Date"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-01 16:21:17.772134",
+ "modified_by": "harpreet.kg@anantdv.com",
+ "module": "RMS",
+ "name": "Repair and Return Tech View Table",
+ "owner": "shresthangsu.c@anantdv.com",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

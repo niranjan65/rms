@@ -1,0 +1,360 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{rma_id}",
+ "creation": "2025-07-15 11:41:23.514952",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "receiving_model_section",
+  "lot_no",
+  "rma_id",
+  "customer",
+  "customer_address",
+  "receiving_remarks",
+  "material_receipt",
+  "submitted_material_receipt",
+  "warehouse",
+  "column_break_hrca",
+  "make",
+  "model_no",
+  "part_no",
+  "serial_no",
+  "warranty_status",
+  "circle",
+  "receiving_date",
+  "lr_no",
+  "delivery_challan_no",
+  "rma_id_status",
+  "repair_model_section",
+  "repaired_date",
+  "rma_assigned_date",
+  "component_used",
+  "repair_status",
+  "column_break_zxvt",
+  "repaired_by",
+  "repaired_by_name",
+  "fault_found",
+  "repair_remarks",
+  "quality_check_model_section",
+  "quality_check_assigned_to",
+  "quality_check_assigned_to_name",
+  "quality_check_pass",
+  "quality_check_done",
+  "column_break_kxuq",
+  "quality_check_assigned_date",
+  "quality_check_done_date",
+  "section_break_vywq",
+  "rma_status",
+  "remarks",
+  "dispatch_model_section",
+  "dispatch_date",
+  "docket_no",
+  "delivery_date",
+  "courier_name",
+  "column_break_aavx",
+  "employee_name",
+  "contact_number",
+  "dispatch_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "receiving_model_section",
+   "fieldtype": "Section Break",
+   "label": "RECEIVING MODEL\t"
+  },
+  {
+   "fieldname": "lot_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lot No.",
+   "options": "RMA"
+  },
+  {
+   "fieldname": "rma_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "RMA ID"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Small Text",
+   "label": "Customer Address"
+  },
+  {
+   "fieldname": "receiving_remarks",
+   "fieldtype": "Link",
+   "label": "Receiving Remarks",
+   "options": "Damages"
+  },
+  {
+   "fieldname": "material_receipt",
+   "fieldtype": "Link",
+   "label": "Material Receipt",
+   "options": "Stock Entry"
+  },
+  {
+   "fieldname": "column_break_hrca",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "make",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Make",
+   "options": "Brand"
+  },
+  {
+   "fieldname": "model_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Model No.",
+   "options": "Item"
+  },
+  {
+   "fieldname": "part_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Part No.",
+   "options": "Item"
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "label": "Serial No."
+  },
+  {
+   "fieldname": "warranty_status",
+   "fieldtype": "Select",
+   "label": "Warranty Status",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "circle",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Circle",
+   "options": "Location"
+  },
+  {
+   "fieldname": "receiving_date",
+   "fieldtype": "Date",
+   "label": "Receiving Date"
+  },
+  {
+   "fieldname": "lr_no",
+   "fieldtype": "Data",
+   "label": "L.R. No."
+  },
+  {
+   "fieldname": "delivery_challan_no",
+   "fieldtype": "Data",
+   "label": "Delivery Challan No."
+  },
+  {
+   "fieldname": "repair_model_section",
+   "fieldtype": "Section Break",
+   "label": "REPAIR MODEL"
+  },
+  {
+   "fieldname": "repaired_date",
+   "fieldtype": "Date",
+   "label": "Repaired Date"
+  },
+  {
+   "fieldname": "component_used",
+   "fieldtype": "Data",
+   "label": "Component Used"
+  },
+  {
+   "fieldname": "repair_status",
+   "fieldtype": "Link",
+   "label": "Repair Status",
+   "options": "Repair Status"
+  },
+  {
+   "fieldname": "column_break_zxvt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "repaired_by",
+   "fieldtype": "Data",
+   "label": "Repaired By"
+  },
+  {
+   "fieldname": "fault_found",
+   "fieldtype": "Link",
+   "label": "Fault Found",
+   "options": "Fault Found"
+  },
+  {
+   "fieldname": "repair_remarks",
+   "fieldtype": "Data",
+   "label": "Repair Remarks"
+  },
+  {
+   "fieldname": "section_break_vywq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "rma_status",
+   "fieldtype": "Table",
+   "label": "RMA Status",
+   "options": "Status"
+  },
+  {
+   "fieldname": "dispatch_model_section",
+   "fieldtype": "Section Break",
+   "label": "DISPATCH MODEL\t"
+  },
+  {
+   "default": "Today",
+   "fieldname": "dispatch_date",
+   "fieldtype": "Date",
+   "label": "Dispatch Date"
+  },
+  {
+   "fieldname": "docket_no",
+   "fieldtype": "Data",
+   "label": "Docket No."
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivery Date"
+  },
+  {
+   "fieldname": "column_break_aavx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dispatch_by",
+   "fieldtype": "Data",
+   "label": "Dispatch By"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "quality_check_model_section",
+   "fieldtype": "Section Break",
+   "label": "Quality Check Model"
+  },
+  {
+   "fieldname": "quality_check_assigned_to",
+   "fieldtype": "Data",
+   "label": "Quality Check Assigned To"
+  },
+  {
+   "fieldname": "column_break_kxuq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quality_check_assigned_date",
+   "fieldtype": "Date",
+   "label": "Quality Check Assigned Date"
+  },
+  {
+   "fieldname": "quality_check_done_date",
+   "fieldtype": "Date",
+   "label": "Quality Check Done Date"
+  },
+  {
+   "fieldname": "submitted_material_receipt",
+   "fieldtype": "Data",
+   "label": "Components Material Request"
+  },
+  {
+   "default": "0",
+   "fieldname": "quality_check_done",
+   "fieldtype": "Check",
+   "label": "Quality Check Done"
+  },
+  {
+   "fieldname": "quality_check_pass",
+   "fieldtype": "Select",
+   "label": "Quality Check Pass",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "rma_assigned_date",
+   "fieldtype": "Date",
+   "label": "RMA Assigned Date"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Table",
+   "label": "Remarks",
+   "options": "Repair Remarks"
+  },
+  {
+   "fieldname": "repaired_by_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Repaired By Name"
+  },
+  {
+   "fieldname": "quality_check_assigned_to_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Quality Check Assigned To Name"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "rma_id_status",
+   "fieldtype": "Data",
+   "label": "RMA ID Status"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number"
+  },
+  {
+   "fieldname": "courier_name",
+   "fieldtype": "Data",
+   "label": "Courier Name"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-28 11:49:19.768388",
+ "modified_by": "niranjan.ks@anantdv.com",
+ "module": "RMS",
+ "name": "RMA BIN",
+ "naming_rule": "Expression",
+ "owner": "saikat.d@anantdv.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
