@@ -1,0 +1,40 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-12 12:14:47.477045",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "repair_remarks",
+  "timestamp"
+ ],
+ "fields": [
+  {
+   "fieldname": "repair_remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Repair Remarks"
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Timestamp"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-11-13 17:24:46.302929",
+ "modified_by": "Administrator",
+ "module": "RMS",
+ "name": "Repair Remarks",
+ "owner": "harpreet.kg@anantdv.com",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
