@@ -7,6 +7,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "old_rma_id",
   "model",
   "brand",
   "part_no",
@@ -39,6 +40,7 @@
    "label": "Serial No."
   },
   {
+   "fetch_from": "old_rma_id.warranty_status",
    "fieldname": "warranty_status",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -77,13 +79,20 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Remarks"
+  },
+  {
+   "fieldname": "old_rma_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Old Rma Id",
+   "options": "RMA BIN"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-12 12:47:02.693079",
- "modified_by": "harpreet.kg@anantdv.com",
+ "modified": "2025-11-28 11:14:45.108839",
+ "modified_by": "shresthangsu.c@anantdv.com",
  "module": "RMS",
  "name": "RMA Features",
  "naming_rule": "Expression (old style)",
