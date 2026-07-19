@@ -16,7 +16,7 @@
   "section_break_wilz",
   "repair_and_return",
   "section_break_d8mz",
-  "component_used"
+  "component_details"
  ],
  "fields": [
   {
@@ -28,6 +28,7 @@
   {
    "fieldname": "warranty_status",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Warranty Status",
    "options": "\nYes\nNo"
   },
@@ -63,12 +64,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "component_used",
-   "fieldtype": "Table",
-   "label": "Component used",
-   "options": "Component Used"
-  },
-  {
    "fieldname": "data_filters_section",
    "fieldtype": "Section Break",
    "label": "Data Filters"
@@ -82,16 +77,23 @@
   {
    "fieldname": "repair_status",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Repair Status",
    "options": "Repair Status"
+  },
+  {
+   "fieldname": "component_details",
+   "fieldtype": "Table",
+   "label": "Component used",
+   "options": "Components Used"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-09-04 15:51:48.238894",
- "modified_by": "harpreet.kg@anantdv.com",
+ "modified": "2026-06-30 19:45:05.774371",
+ "modified_by": "devteam@anantdv.com",
  "module": "RMS",
  "name": "Repair and Return",
  "owner": "niranjan.ks@anantdv.com",
@@ -120,6 +122,7 @@
   }
  ],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

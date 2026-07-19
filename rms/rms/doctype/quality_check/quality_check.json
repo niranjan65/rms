@@ -16,7 +16,7 @@
   "section_break_xply",
   "quality_check",
   "section_break_tzam",
-  "component_used"
+  "component_details"
  ],
  "fields": [
   {
@@ -28,6 +28,7 @@
   {
    "fieldname": "warranty_status",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Warranty Status",
    "options": "\nYes\nNo"
   },
@@ -63,12 +64,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "component_used",
-   "fieldtype": "Table",
-   "label": "Component used",
-   "options": "Component Used"
-  },
-  {
    "fieldname": "data_filters_section",
    "fieldtype": "Section Break",
    "label": "Data Filters"
@@ -82,16 +77,23 @@
   {
    "fieldname": "repair_status",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Repair Status",
    "options": "Repair Status"
+  },
+  {
+   "fieldname": "component_details",
+   "fieldtype": "Table",
+   "label": "Component used",
+   "options": "Components Used"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-09-04 17:10:19.245828",
- "modified_by": "harpreet.kg@anantdv.com",
+ "modified": "2026-07-01 16:04:49.053693",
+ "modified_by": "devteam@anantdv.com",
  "module": "RMS",
  "name": "Quality Check",
  "owner": "shresthangsu.c@anantdv.com",
@@ -108,6 +110,7 @@
   }
  ],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

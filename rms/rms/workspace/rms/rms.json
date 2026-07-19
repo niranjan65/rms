@@ -1,0 +1,165 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"G6bQ91nqGD\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">RMS</span>\",\"col\":12}},{\"id\":\"0XwhwpSBxl\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total RMA Records \",\"col\":4}},{\"id\":\"Qyksiv5JE0\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hUKtcqkwpW\",\"type\":\"card\",\"data\":{\"card_name\":\"RMS Reports & Masters\",\"col\":4}},{\"id\":\"AasCGRC9Dt\",\"type\":\"card\",\"data\":{\"card_name\":\"RMS Report\",\"col\":4}}]",
+ "creation": "2025-01-20 11:57:05.438127",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "onboarding",
+ "idx": 4,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "RMS",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RMS Reports & Masters",
+   "link_count": 6,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RMA",
+   "link_count": 0,
+   "link_to": "RMA",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Repair and Return",
+   "link_count": 0,
+   "link_to": "Repair and Return",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Repair and Return Technician View",
+   "link_count": 0,
+   "link_to": "Repair and Return Technician View",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quality Check",
+   "link_count": 0,
+   "link_to": "Quality Check",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quality Check Technician View",
+   "link_count": 0,
+   "link_to": "Quality Check Technician View",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Delivery Note",
+   "link_count": 0,
+   "link_to": "Delivery Note",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Invoice",
+   "link_count": 0,
+   "link_to": "Sales Invoice",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RMS Report",
+   "link_count": 1,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "RMS Operations Report",
+   "link_count": 0,
+   "link_to": "Technician Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Admin Page",
+   "link_count": 0,
+   "link_to": "rma-admin-dashboard",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-07-08 13:11:02.884300",
+ "modified_by": "Administrator",
+ "module": "RMS",
+ "name": "RMS",
+ "number_cards": [
+  {
+   "label": "Total RMA Records ",
+   "number_card_name": "Total RMA-1"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "RMS"
+  },
+  {
+   "role": "RMA Bin"
+  },
+  {
+   "role": "RMA Creation"
+  },
+  {
+   "role": "Quality Check Technician View"
+  },
+  {
+   "role": "Repair and Return Technician View"
+  },
+  {
+   "role": "Other Access"
+  },
+  {
+   "role": "Technician View"
+  }
+ ],
+ "sequence_id": 21.0,
+ "shortcuts": [],
+ "title": "RMS"
+}

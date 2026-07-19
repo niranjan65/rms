@@ -1,23 +1,67 @@
-# repair_and_return.py
 # Copyright (c) 2025, Anantdv and contributors
 # For license information, please see license.txt
 
 import frappe
 from frappe.model.document import Document
+from datetime import datetime, timedelta
+from frappe.utils import now_datetime, get_datetime
+
 
 class RepairandReturn(Document):
-    pass
+    def after_save(self):
+        """
+        After saving the Repair and Return document, update the repair_and_return_start_time
+        in each corresponding RMA BIN record.
+        """
+        for row in self.repair_and_return:
+            frappe.msgprint(f"Processing row with RMA ID: {row.rma_id}")
+            if row.rma_id:
+                # Check if repair_and_return_start_time is already set
+                rma_bin = frappe.get_doc("RMA BIN", row.rma_id)
+                if not rma_bin.repair_and_return_start_time:
+                    rma_bin.repair_and_return_start_time = now_datetime()
+                    rma_bin.save()
+
+
+def calculate_time_difference(start_time_str, end_time_str):
+    """
+    Calculate time difference between two datetime strings safely.
+    Returns time in HH:MM:SS format.
+    """
+    if not start_time_str or not end_time_str:
+        return None
+    
+    try:
+        start_time = get_datetime(start_time_str)
+        end_time = get_datetime(end_time_str)
+        
+        diff = end_time - start_time
+        total_seconds = int(diff.total_seconds())
+        
+        hours = total_seconds // 3600
+        minutes = (total_seconds % 3600) // 60
+        seconds = total_seconds % 60
+        
+        return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
+    except Exception as e:
+        frappe.logger().error(f"Error calculating TAT: {str(e)}")
+        return None
 
 
 @frappe.whitelist()
 def get_filtered_rma_data(customer=None, lot_no=None, warranty_status=None, circle=None, rma_id=None, repair_status=None):
     """
-    Filter RMA BIN records based on provided filters
+    Filter RMA BIN records based on provided filters.
+    Only active (unassigned) items are fetched.
     """
-    # Build filters for the query
     conditions = []
     values = {}
     
+    # Check that already-assigned records won't be visible in the listing
+    
+    conditions.append("(repaired_by IS NULL OR repaired_by = '' OR rma_id_status = 'Rma Generated')")
+    # conditions.append("(repaired_by IS NULL OR repaired_by = '' OR repair_status = 'QC Failed, Returned to Repair' OR repair_status = 'Rma Generated')")
+        
     if customer:
         conditions.append("customer = %(customer)s")
         values["customer"] = customer
@@ -35,67 +79,58 @@ def get_filtered_rma_data(customer=None, lot_no=None, warranty_status=None, circ
         values["circle"] = circle
     
     if rma_id:
-        # Check both rma_id and name fields (rma_reference doesn't exist in your DocType)
         conditions.append("(rma_id LIKE %(rma_id_filter)s OR name LIKE %(rma_id_filter)s)")
         values["rma_id_filter"] = f"%{rma_id}%"
     
-    # Build the WHERE clause
     where_clause = ""
+    limit_clause = ""
+    
     if conditions:
         where_clause = "WHERE " + " AND ".join(conditions)
+    else:
+        limit_clause = "LIMIT 200"
     
-    # Execute query to get RMA bins
     query = f"""
         SELECT * FROM `tabRMA BIN`
         {where_clause}
+        {limit_clause}
     """
     
     rma_bins = frappe.db.sql(query, values, as_dict=True)
-    
     filtered_rma_bins = []
     
     for rma in rma_bins:
-        # Get status records for this RMA
+        # Fetch status child records
         rma["rma_status"] = frappe.get_all(
             "Status",  
             filters={"parent": rma["name"]},
             fields=["*"],
-            order_by="timestamp desc"  # Order by timestamp to get latest first
+            order_by="timestamp desc"
         )
 
-        # Get remarks for this RMA
+        # Fetch remarks child records
         rma["remarks"] = frappe.get_all(
             "Repair Remarks",  
             filters={"parent": rma["name"]},
             fields=["*"],
-            order_by="creation desc"  # Also order remarks by newest first
+            order_by="creation desc"
         )
         
-        # Apply repair_status filter if provided
         should_include = True
         
         if rma["rma_status"] and len(rma["rma_status"]) > 0:
-            # Get the last status - since we're ordering by timestamp desc, first is latest
-            # No need to check order as we're explicitly ordering DESC in the query
             last_status = rma["rma_status"][0]
-            
-            # Store the last status in the RMA object for easy access
             rma["rma_id_status"] = last_status.get("repair_status")
             
-            # If repair_status filter is provided, check if it matches
             if repair_status:
-                # Check if the last status matches the filter
                 if last_status.get("repair_status") != repair_status:
                     should_include = False
             else:
-                # If no repair_status filter, exclude "Hold" status (original logic)
+                # Exclude hold status on default loads
                 if last_status.get("repair_status") == "Hold":
                     should_include = False
         else:
-            # No status exists
             rma["rma_id_status"] = None
-            
-            # If repair_status filter is provided and no status exists, exclude
             if repair_status:
                 should_include = False
         
@@ -109,7 +144,6 @@ def get_filtered_rma_data(customer=None, lot_no=None, warranty_status=None, circ
 def get_repair_status_options():
     """
     Helper function to get all unique repair status values
-    for populating dropdown options
     """
     statuses = frappe.db.sql("""
         SELECT DISTINCT repair_status 

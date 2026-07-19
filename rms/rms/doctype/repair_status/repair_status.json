@@ -6,7 +6,9 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "repair_status"
+  "repair_status",
+  "repair_and_return_tech_view",
+  "quality_check_technician_view"
  ],
  "fields": [
   {
@@ -14,13 +16,25 @@
    "fieldtype": "Data",
    "label": "Repair Status",
    "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "repair_and_return_tech_view",
+   "fieldtype": "Check",
+   "label": "Repair and Return Technician View"
+  },
+  {
+   "default": "0",
+   "fieldname": "quality_check_technician_view",
+   "fieldtype": "Check",
+   "label": "Quality Check Technician View"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-13 17:25:15.319645",
- "modified_by": "Administrator",
+ "modified": "2026-01-12 12:02:20.109737",
+ "modified_by": "saikat.d@anantdv.com",
  "module": "RMS",
  "name": "Repair Status",
  "naming_rule": "By fieldname",

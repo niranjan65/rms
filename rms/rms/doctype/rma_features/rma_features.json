@@ -11,7 +11,9 @@
   "model",
   "brand",
   "part_no",
+  "download",
   "rma_id",
+  "barcode",
   "serial_no",
   "warranty_status",
   "receiving_remarks",
@@ -24,14 +26,16 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Make",
-   "options": "Brand"
+   "options": "Brand",
+   "reqd": 1
   },
   {
    "fieldname": "model",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Model",
-   "options": "Item"
+   "options": "Item",
+   "reqd": 1
   },
   {
    "fieldname": "serial_no",
@@ -40,10 +44,8 @@
    "label": "Serial No."
   },
   {
-   "fetch_from": "old_rma_id.warranty_status",
    "fieldname": "warranty_status",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Warranty Status",
    "options": "\nYes\nNo"
   },
@@ -55,6 +57,7 @@
    "options": "Damages"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "repair_status",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -84,21 +87,36 @@
    "fieldname": "old_rma_id",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Old Rma Id",
+   "label": "Old RMA ID",
    "options": "RMA BIN"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "barcode",
+   "fieldtype": "Barcode",
+   "in_list_view": 1,
+   "label": "Barcode",
+   "read_only": 1
+  },
+  {
+   "fieldname": "download",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "Download\u2b07\ufe0f"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-11-28 11:14:45.108839",
- "modified_by": "shresthangsu.c@anantdv.com",
+ "modified": "2026-02-11 17:44:03.980285",
+ "modified_by": "saikat.d@anantdv.com",
  "module": "RMS",
  "name": "RMA Features",
  "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

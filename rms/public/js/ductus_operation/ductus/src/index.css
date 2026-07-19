@@ -1,0 +1,557 @@
+/* :root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Scoped Theme Variables (Only affects the Ductus React App)
+   ========================================================================== */
+.ductus-rms-app {
+  --ductus-text: #6b6375;
+  --ductus-text-h: #08060d;
+  --ductus-bg: #fff;
+  --ductus-border: #e5e4e7;
+  --ductus-code-bg: #f4f3ec;
+  --ductus-accent: #aa3bff;
+  --ductus-accent-bg: rgba(170, 59, 255, 0.08);
+  --ductus-accent-border: rgba(170, 59, 255, 0.4);
+  --ductus-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ductus-text);
+  background: var(--ductus-bg);
+  box-sizing: border-box;
+  padding: 16px;
+  width: 100%;
+}
+
+/* Dark Mode Scoped overrides */
+@media (prefers-color-scheme: dark) {
+  .ductus-rms-app {
+    --ductus-text: #9ca3af;
+    --ductus-text-h: #f3f4f6;
+    --ductus-bg: #16171d;
+    --ductus-border: #2e303a;
+    --ductus-code-bg: #1f2028;
+    --ductus-accent: #c084fc;
+    --ductus-accent-bg: rgba(192, 132, 252, 0.12);
+    --ductus-accent-border: rgba(192, 132, 252, 0.4);
+    --ductus-shadow: rgba(0, 0, 0, 0.3) 0 4px 12px;
+  }
+}
+
+/* Scoped elements reset to prevent clashing with Frappe globals */
+.ductus-rms-app * {
+  box-sizing: border-box;
+}
+
+.ductus-rms-app h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ductus-text-h);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.ductus-rms-app h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ductus-text-h);
+  margin: 0 0 6px 0;
+}
+
+.ductus-rms-app h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ductus-text-h);
+  margin: 0 0 4px 0;
+}
+
+.ductus-rms-app p {
+  font-size: 13px;
+  color: var(--ductus-text);
+  margin: 0;
+}
+
+/* Header Styling */
+.ductus-rms-app .app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ductus-border);
+  margin-bottom: 24px;
+}
+
+.ductus-rms-app .header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ductus-rms-app .brand-icon-box {
+  width: 36px;
+  height: 36px;
+  background: var(--ductus-accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ductus-rms-app .brand-meta h2 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.ductus-rms-app .brand-meta p {
+  font-size: 11px;
+  color: var(--ductus-text);
+}
+
+.ductus-rms-app .live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: var(--ductus-code-bg);
+  border: 1px solid var(--ductus-border);
+  border-radius: 20px;
+  color: var(--ductus-text-h);
+}
+
+.ductus-rms-app .status-pulse {
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Grid & Cards (scaled down and tight) */
+.ductus-rms-app .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.ductus-rms-app .menu-card {
+  background: var(--ductus-bg);
+  border: 1px solid var(--ductus-border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 160px;
+  box-shadow: var(--ductus-shadow);
+  transition: all 0.25s ease-out;
+}
+
+.ductus-rms-app .menu-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--ductus-accent);
+  box-shadow: 0 6px 12px rgba(170, 59, 255, 0.08);
+}
+
+.ductus-rms-app .card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ductus-rms-app .card-icon-frame {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--ductus-code-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ductus-accent);
+}
+
+.ductus-rms-app .arrow-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--ductus-text);
+  opacity: 0.5;
+  transition: all 0.2s;
+}
+
+.ductus-rms-app .menu-card:hover .arrow-icon {
+  opacity: 1;
+  color: var(--ductus-accent);
+  transform: translate(1px, -1px);
+}
+
+.ductus-rms-app .card-details h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 8px 0 4px 0;
+}
+
+.ductus-rms-app .card-details p {
+  font-size: 11.5px;
+  color: var(--ductus-text);
+  line-height: 1.35;
+}
+
+/* Scoped Back button */
+.ductus-rms-app .back-btn {
+  background: none;
+  border: none;
+  color: var(--ductus-accent);
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+  padding: 0;
+  gap: 6px;
+}
+
+/* Scoped Layouts */
+.ductus-rms-app .split-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .ductus-rms-app .split-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ductus-rms-app .form-card,
+.ductus-rms-app .list-card {
+  background: var(--ductus-bg);
+  border: 1px solid var(--ductus-border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.ductus-rms-app .form-group {
+  margin-bottom: 12px;
+}
+
+.ductus-rms-app .form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ductus-text-h);
+  margin-bottom: 4px;
+}
+
+.ductus-rms-app .form-input,
+.ductus-rms-app .form-textarea {
+  width: 100%;
+  border: 1px solid var(--ductus-border);
+  background: var(--ductus-code-bg);
+  color: var(--ductus-text-h);
+  font-size: 12.5px;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.ductus-rms-app .form-input:focus,
+.ductus-rms-app .form-textarea:focus {
+  outline: none;
+  border-color: var(--ductus-accent);
+  background: var(--ductus-bg);
+}
+
+.ductus-rms-app .primary-btn {
+  background: var(--ductus-accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.ductus-rms-app .primary-btn:hover {
+  opacity: 0.9;
+}
+
+/* Scoped Tables */
+.ductus-rms-app .table-panel {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--ductus-border);
+  border-radius: 8px;
+  background: var(--ductus-bg);
+}
+
+.ductus-rms-app .rms-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.ductus-rms-app .rms-table th {
+  background: var(--ductus-code-bg);
+  color: var(--ductus-text-h);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ductus-border);
+}
+
+.ductus-rms-app .rms-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ductus-border);
+  color: var(--ductus-text);
+}
+
+.ductus-rms-app .rms-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Scoped Badges */
+.ductus-rms-app .status-badge {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.ductus-rms-app .badge-purple {
+  background: var(--ductus-accent-bg);
+  color: var(--ductus-accent);
+  border-color: var(--ductus-accent-border);
+}
+
+.ductus-rms-app .badge-amber {
+  background: rgba(245, 158, 11, 0.08);
+  color: #d97706;
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.ductus-rms-app .badge-green {
+  background: rgba(16, 185, 129, 0.08);
+  color: #059669;
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.ductus-rms-app .badge-rose {
+  background: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.ductus-rms-app .text-btn {
+  background: none;
+  border: none;
+  color: var(--ductus-accent);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* Scoped Tech and QC Checklists */
+.ductus-rms-app .tech-layout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.ductus-rms-app .tech-panel {
+  border: 1px solid var(--ductus-border);
+  border-radius: 12px;
+  padding: 16px;
+  background: var(--ductus-bg);
+  box-shadow: var(--ductus-shadow);
+}
+
+.ductus-rms-app .tech-panel h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 2px 0;
+}
+
+.ductus-rms-app .tech-checklist {
+  margin: 12px 0;
+}
+
+.ductus-rms-app .checklist-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.ductus-rms-app .checklist-row input[type="checkbox"] {
+  accent-color: var(--ductus-accent);
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.ductus-rms-app .action-row {
+  display: flex;
+  gap: 8px;
+}
+
+.ductus-rms-app .secondary-btn {
+  background: var(--ductus-code-bg);
+  color: var(--ductus-text-h);
+  border: 1px solid var(--ductus-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.ductus-rms-app .secondary-btn:hover {
+  background: var(--ductus-border);
+}

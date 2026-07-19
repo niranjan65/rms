@@ -1,0 +1,44 @@
+:root{
+
+  --bg:#f5f8ff;
+
+  --glass:
+  rgba(255,255,255,.42);
+
+  --glass-border:
+  rgba(255,255,255,.55);
+
+  --text:#162033;
+
+  --muted:#6b7280;
+
+  --blue:#4f8cff;
+
+  --purple:#8b5cf6;
+
+  --cyan:#00c2ff;
+
+  --success:#10b981;
+
+  --danger:#ef4444;
+
+  --shadow:
+  0 20px 60px rgba(37,99,235,.08);
+
+  font-family:
+  Inter,
+  system-ui,
+  sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--bg);
+  overflow-x:hidden;
+  overflow-y:auto;
+}

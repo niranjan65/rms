@@ -21,6 +21,10 @@ add_to_apps_screen = [
 	}
 ]
 
+permission_query_conditions = {
+    "RMA": "rms.rms.doctype.rma.rma.get_permission_query_conditions"
+}  
+
 # Includes in <head>
 # ------------------
 

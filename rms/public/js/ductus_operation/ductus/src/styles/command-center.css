@@ -1,0 +1,77 @@
+.command-center{
+
+  position:relative;
+
+  min-height:100vh;
+
+  overflow:hidden;
+}
+
+.command-bg{
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+  linear-gradient(
+  rgba(5,12,24,.78),
+  rgba(5,12,24,.82)
+  ),
+
+  url(
+  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1920"
+  );
+
+  background-size:cover;
+  background-position:center;
+
+  filter:blur(0px);
+
+  z-index:0;
+}
+
+.glow-one{
+
+  position:absolute;
+
+  width:500px;
+  height:500px;
+
+  border-radius:50%;
+
+  background:
+  rgba(0,191,255,.25);
+
+  filter:blur(120px);
+
+  top:-100px;
+  left:-100px;
+}
+
+.glow-two{
+
+  position:absolute;
+
+  width:450px;
+  height:450px;
+
+  border-radius:50%;
+
+  background:
+  rgba(124,77,255,.25);
+
+  filter:blur(140px);
+
+  bottom:-100px;
+  right:-100px;
+}
+
+.content-layer{
+
+  position:relative;
+
+  z-index:2;
+
+  padding:30px;
+}

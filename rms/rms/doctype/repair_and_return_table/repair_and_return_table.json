@@ -26,8 +26,9 @@
   "fault_found",
   "repair_status",
   "repair_remarks",
+  "view_remarks",
   "employee_name",
-  "tat"
+  "repair_tat"
  ],
  "fields": [
   {
@@ -36,7 +37,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Lot No.",
-   "options": "RMA"
+   "options": "RMA",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -44,7 +46,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "RMA ID",
-   "options": "RMA BIN"
+   "options": "RMA BIN",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -52,7 +55,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Customer",
-   "options": "Customer"
+   "options": "Customer",
+   "read_only": 1
   },
   {
    "columns": 4,
@@ -60,7 +64,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Receiving Remarks",
-   "options": "Damages"
+   "options": "Damages",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -68,7 +73,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Make",
-   "options": "Brand"
+   "options": "Brand",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -76,7 +82,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Model No.",
-   "options": "Item"
+   "options": "Item",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -84,22 +91,24 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Part No.",
-   "options": "Item"
+   "options": "Item",
+   "read_only": 1
   },
   {
    "columns": 2,
    "fieldname": "serial_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Serial No."
+   "label": "Serial No.",
+   "read_only": 1
   },
   {
    "columns": 3,
    "fieldname": "warranty_status",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Warranty Status",
-   "options": "\nYes\nNo"
+   "options": "\nYes\nNo",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -107,7 +116,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Circle",
-   "options": "Location"
+   "options": "Location",
+   "read_only": 1
   },
   {
    "columns": 3,
@@ -115,21 +125,24 @@
    "fieldname": "receiving_date",
    "fieldtype": "Datetime",
    "in_list_view": 1,
-   "label": "Receiving Date"
+   "label": "Receiving Date",
+   "read_only": 1
   },
   {
    "columns": 2,
    "fieldname": "lr_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "L.R. No."
+   "label": "L.R. No.",
+   "read_only": 1
   },
   {
    "columns": 4,
    "fieldname": "delivery_challan_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Delivery Challan No."
+   "label": "Delivery Challan No.",
+   "read_only": 1
   },
   {
    "columns": 3,
@@ -150,14 +163,12 @@
    "columns": 3,
    "fieldname": "component_used",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Component Used "
   },
   {
    "columns": 2,
    "fieldname": "fault_found",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Fault Found ",
    "options": "Fault Found"
   },
@@ -165,7 +176,6 @@
    "columns": 2,
    "fieldname": "repair_status",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Repair Status",
    "options": "Repair Status"
   },
@@ -174,7 +184,7 @@
    "fieldname": "repair_remarks",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Repair Remarks"
+   "label": "Remarks"
   },
   {
    "fieldname": "employee_name",
@@ -190,24 +200,32 @@
    "options": "Employee"
   },
   {
-   "columns": 2,
-   "fieldname": "tat",
+   "fetch_from": "rma_id.total_repair_time",
+   "fieldname": "repair_tat",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "TAT"
+   "label": "Repair Tat",
+   "read_only": 1
+  },
+  {
+   "fieldname": "view_remarks",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "View Remarks"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-09-04 12:41:41.595394",
- "modified_by": "harpreet.kg@anantdv.com",
+ "modified": "2026-02-11 12:48:58.331446",
+ "modified_by": "saikat.d@anantdv.com",
  "module": "RMS",
  "name": "Repair and Return Table",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

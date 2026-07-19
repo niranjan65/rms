@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-14 13:16:43.793626",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "timestamp",
+  "modified_by1",
+  "remarks",
+  "rma_status",
+  "quality_check_pass"
+ ],
+ "fields": [
+  {
+   "fieldname": "status",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Status ",
+   "options": "Rma Status"
+  },
+  {
+   "fieldname": "modified_by1",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Modified by"
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Timestamp"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "rma_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "RMA status"
+  },
+  {
+   "fieldname": "quality_check_pass",
+   "fieldtype": "Data",
+   "label": "Quality Check Pass",
+   "options": "Quality Check table"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-23 11:40:27.323764",
+ "modified_by": "devteam@anantdv.com",
+ "module": "RMS",
+ "name": "RMA Status Update",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

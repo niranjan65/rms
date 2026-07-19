@@ -122,6 +122,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Date"
@@ -132,6 +133,7 @@
    "label": "Delivery Challan No."
   },
   {
+   "default": "Ductus Technologies Pvt Ltd - DTPL",
    "fieldname": "warehouse",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -158,11 +160,11 @@
   {
    "group": "Stock Entry",
    "link_doctype": "Stock Entry",
-   "link_fieldname": "lod_no"
+   "link_fieldname": "connection"
   }
  ],
- "modified": "2025-08-25 19:40:50.184175",
- "modified_by": "harpreet.kg@anantdv.com",
+ "modified": "2026-07-08 18:57:26.414709",
+ "modified_by": "Administrator",
  "module": "RMS",
  "name": "RMA",
  "naming_rule": "Expression",
@@ -208,6 +210,7 @@
   }
  ],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

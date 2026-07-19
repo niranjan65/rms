@@ -1,0 +1,38 @@
+.rma-dashboard .rma-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.rma-dashboard .rma-card h5 {
+    margin-top: 0;
+    font-weight: 600;
+    color: #4b5563;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rma-dashboard .rma-card h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.rma-dashboard .bg-primary { background: #007bff !important; border: none; }
+.rma-dashboard .bg-danger { background: #dc3545 !important; border: none; }
+.rma-dashboard .bg-success { background: #28a745 !important; border: none; }
+
+.rma-dashboard table th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-size: 13px;
+    font-weight: 600;
+}
+.rma-dashboard table td {
+    font-size: 13px;
+    vertical-align: middle;
+}

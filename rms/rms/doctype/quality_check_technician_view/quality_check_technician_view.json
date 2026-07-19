@@ -22,7 +22,8 @@
   {
    "fieldname": "technician",
    "fieldtype": "Data",
-   "label": "Technician "
+   "label": "Technician ",
+   "read_only": 1
   },
   {
    "fieldname": "customer",
@@ -33,6 +34,7 @@
   {
    "fieldname": "warranty_status",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": " Warranty Status",
    "options": "\nYes\nNo"
   },
@@ -71,6 +73,7 @@
   {
    "fieldname": "repair_status",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Repair Status",
    "options": "Repair Status"
   },
@@ -85,8 +88,8 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-09-04 17:11:57.843134",
- "modified_by": "harpreet.kg@anantdv.com",
+ "modified": "2026-07-02 13:41:05.374653",
+ "modified_by": "Administrator",
  "module": "RMS",
  "name": "Quality Check Technician View",
  "owner": "harpreet.kg@anantdv.com",
@@ -103,6 +106,7 @@
   }
  ],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

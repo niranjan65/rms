@@ -13,8 +13,13 @@
   "customer_address",
   "receiving_remarks",
   "material_receipt",
+  "material_request",
+  "material_issue",
   "submitted_material_receipt",
   "warehouse",
+  "delivery_note_date",
+  "rma_creation_time",
+  "delivery_note_creation_time",
   "column_break_hrca",
   "make",
   "model_no",
@@ -26,30 +31,45 @@
   "lr_no",
   "delivery_challan_no",
   "rma_id_status",
+  "total_tat",
+  "tat",
+  "total_tat_dispatch",
   "repair_model_section",
   "repaired_date",
   "rma_assigned_date",
-  "component_used",
+  "component_used_init",
+  "component_details",
   "repair_status",
+  "items",
   "column_break_zxvt",
   "repaired_by",
   "repaired_by_name",
   "fault_found",
   "repair_remarks",
+  "repair_and_return_start_time",
+  "repair_and_return_end_time",
+  "total_repair_time",
   "quality_check_model_section",
   "quality_check_assigned_to",
   "quality_check_assigned_to_name",
   "quality_check_pass",
+  "quality_check_initiated",
   "quality_check_done",
+  "quality_check_status",
   "column_break_kxuq",
   "quality_check_assigned_date",
   "quality_check_done_date",
+  "quality_check_start_time",
+  "quality_check_end_time",
+  "total_quality_time",
   "section_break_vywq",
   "rma_status",
   "remarks",
+  "rma_tracking_status",
   "dispatch_model_section",
   "dispatch_date",
   "docket_no",
+  "delivery_note_id",
   "delivery_date",
   "courier_name",
   "column_break_aavx",
@@ -86,6 +106,7 @@
   {
    "fieldname": "customer_address",
    "fieldtype": "Small Text",
+   "hidden": 1,
    "label": "Customer Address"
   },
   {
@@ -133,6 +154,7 @@
   {
    "fieldname": "warranty_status",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Warranty Status",
    "options": "\nYes\nNo"
   },
@@ -166,12 +188,7 @@
   {
    "fieldname": "repaired_date",
    "fieldtype": "Date",
-   "label": "Repaired Date"
-  },
-  {
-   "fieldname": "component_used",
-   "fieldtype": "Data",
-   "label": "Component Used"
+   "label": "Status Update Date"
   },
   {
    "fieldname": "repair_status",
@@ -186,7 +203,7 @@
   {
    "fieldname": "repaired_by",
    "fieldtype": "Data",
-   "label": "Repaired By"
+   "label": "Assign to"
   },
   {
    "fieldname": "fault_found",
@@ -215,7 +232,6 @@
    "label": "DISPATCH MODEL\t"
   },
   {
-   "default": "Today",
    "fieldname": "dispatch_date",
    "fieldtype": "Date",
    "label": "Dispatch Date"
@@ -270,8 +286,9 @@
   },
   {
    "fieldname": "submitted_material_receipt",
-   "fieldtype": "Data",
-   "label": "Components Material Request"
+   "fieldtype": "Table MultiSelect",
+   "label": "Components Material Request",
+   "options": "For Material Request Multiselect"
   },
   {
    "default": "0",
@@ -293,7 +310,7 @@
   {
    "fieldname": "remarks",
    "fieldtype": "Table",
-   "label": "Remarks",
+   "label": "User Remarks",
    "options": "Repair Remarks"
   },
   {
@@ -317,6 +334,8 @@
   {
    "fieldname": "rma_id_status",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "RMA ID Status"
   },
   {
@@ -328,13 +347,134 @@
    "fieldname": "courier_name",
    "fieldtype": "Data",
    "label": "Courier Name"
+  },
+  {
+   "fieldname": "delivery_note_date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "label": "Delivery Note Date"
+  },
+  {
+   "fieldname": "total_tat",
+   "fieldtype": "Data",
+   "label": "Total TAT (For QC and RNR )",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tat",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "TAT"
+  },
+  {
+   "fieldname": "repair_and_return_start_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Repair and Return Start Time"
+  },
+  {
+   "fieldname": "repair_and_return_end_time",
+   "fieldtype": "Datetime",
+   "label": "Repair and Return End Time"
+  },
+  {
+   "fieldname": "quality_check_start_time",
+   "fieldtype": "Datetime",
+   "label": "Quality Check Start Time"
+  },
+  {
+   "fieldname": "quality_check_end_time",
+   "fieldtype": "Datetime",
+   "label": "Quality Check End Time"
+  },
+  {
+   "fieldname": "total_repair_time",
+   "fieldtype": "Data",
+   "label": "Total Repair Time"
+  },
+  {
+   "fieldname": "total_quality_time",
+   "fieldtype": "Data",
+   "label": "Total Quality Time"
+  },
+  {
+   "fieldname": "rma_creation_time",
+   "fieldtype": "Datetime",
+   "label": "RMA Creation Time"
+  },
+  {
+   "fieldname": "delivery_note_creation_time",
+   "fieldtype": "Datetime",
+   "label": "Delivery Note Creation Time"
+  },
+  {
+   "fieldname": "total_tat_dispatch",
+   "fieldtype": "Data",
+   "label": "Total TAT"
+  },
+  {
+   "fieldname": "rma_tracking_status",
+   "fieldtype": "Table",
+   "label": "RMA Tracking Status",
+   "options": "RMA Status Update"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Text",
+   "hidden": 1,
+   "label": "Items Used"
+  },
+  {
+   "fieldname": "quality_check_status",
+   "fieldtype": "Data",
+   "label": "Quality Check Status"
+  },
+  {
+   "fieldname": "component_details",
+   "fieldtype": "Table",
+   "label": "Component Requested",
+   "options": "Components Used"
+  },
+  {
+   "default": "0",
+   "fieldname": "quality_check_initiated",
+   "fieldtype": "Check",
+   "label": "Quality Check Initiated"
+  },
+  {
+   "fieldname": "material_issue",
+   "fieldtype": "Table MultiSelect",
+   "label": "Material Issue",
+   "options": "For Material Request Multiselect"
+  },
+  {
+   "fieldname": "material_request",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Material Request(Transfer)",
+   "options": "Stock Entry"
+  },
+  {
+   "fieldname": "component_used_init",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Component Used"
+  },
+  {
+   "fieldname": "delivery_note_id",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Delivery Note I'D",
+   "options": "Delivery Note"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-28 11:49:19.768388",
- "modified_by": "niranjan.ks@anantdv.com",
+ "modified": "2026-07-02 16:14:16.277081",
+ "modified_by": "Administrator",
  "module": "RMS",
  "name": "RMA BIN",
  "naming_rule": "Expression",
@@ -354,7 +494,9 @@
   }
  ],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

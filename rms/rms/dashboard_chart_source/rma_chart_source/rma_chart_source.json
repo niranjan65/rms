@@ -1,0 +1,13 @@
+{
+ "creation": "2026-04-21 16:31:53.184261",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart Source",
+ "idx": 0,
+ "modified": "2026-04-21 18:34:38.948406",
+ "modified_by": "Administrator",
+ "module": "RMS",
+ "name": "RMA Chart Source",
+ "owner": "Administrator",
+ "source_name": "RMA Chart Source",
+ "timeseries": 1
+}

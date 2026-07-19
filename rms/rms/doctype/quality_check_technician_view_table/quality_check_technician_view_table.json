@@ -22,12 +22,14 @@
   "material_receipt",
   "quality_check_assigned_to",
   "quality_check_assigned_to_name",
+  "quality_check_initiated",
   "quality_check_done",
   "quality_check_pass",
   "quality_check_date",
   "quality_check_assigned_date",
-  "tat",
-  "receiving_date"
+  "receiving_date",
+  "view_remarks",
+  "view_details"
  ],
  "fields": [
   {
@@ -36,7 +38,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Lot No.",
-   "options": "RMA"
+   "options": "RMA",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -44,7 +47,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "RMA ID",
-   "options": "RMA BIN"
+   "options": "RMA BIN",
+   "read_only": 1
   },
   {
    "columns": 7,
@@ -52,7 +56,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Repaired By",
-   "options": "Employee"
+   "options": "Employee",
+   "read_only": 1
   },
   {
    "columns": 3,
@@ -60,7 +65,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Customer",
-   "options": "Customer"
+   "options": "Customer",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -68,7 +74,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Model No.",
-   "options": "Item"
+   "options": "Item",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -76,28 +83,33 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Part No",
-   "options": "Item"
+   "options": "Item",
+   "read_only": 1
   },
   {
    "columns": 2,
    "fieldname": "serial_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Serial No"
+   "label": "Serial No",
+   "read_only": 1
   },
   {
    "columns": 3,
    "fieldname": "assigned_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Assigned Date "
+   "label": "Assigned Date ",
+   "read_only": 1
   },
   {
    "columns": 4,
    "fieldname": "component_used",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
-   "label": "Component Used "
+   "label": "Component Used ",
+   "read_only": 1
   },
   {
    "columns": 4,
@@ -112,15 +124,16 @@
    "fieldname": "repair_remarks",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Repair Remarks"
+   "label": "Remarks"
   },
   {
    "columns": 3,
    "fieldname": "material_receipt",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Material Receipt",
-   "options": "Stock Entry"
+   "label": "Material Request",
+   "options": "Stock Entry",
+   "read_only": 1
   },
   {
    "columns": 5,
@@ -128,7 +141,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Quality Check Assigned To",
-   "options": "Employee"
+   "options": "Employee",
+   "read_only": 1
   },
   {
    "columns": 5,
@@ -136,11 +150,11 @@
    "fieldname": "quality_check_done",
    "fieldtype": "Check",
    "in_list_view": 1,
-   "label": "Quality check Done",
-   "set_only_once": 1
+   "label": "Quality check Done"
   },
   {
    "columns": 5,
+   "default": "Today",
    "fieldname": "quality_check_date",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -169,40 +183,58 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Repair Status"
-  },
-  {
-   "columns": 1,
-   "fieldname": "tat",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "TAT"
+   "options": "Repair Status",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "columns": 5,
    "fieldname": "quality_check_assigned_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Quality Check Assigned Date"
+   "label": "Quality Check Assigned Date",
+   "read_only": 1
   },
   {
    "fieldname": "receiving_date",
    "fieldtype": "Datetime",
    "in_list_view": 1,
-   "label": "Receiving Date"
+   "label": "Receiving Date",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "quality_check_initiated",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Quality Check Initiated",
+   "width": "5"
+  },
+  {
+   "fieldname": "view_remarks",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "View Remarks"
+  },
+  {
+   "fieldname": "view_details",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "View Details "
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-09-04 17:13:13.675999",
- "modified_by": "harpreet.kg@anantdv.com",
+ "modified": "2026-07-02 13:41:55.048410",
+ "modified_by": "Administrator",
  "module": "RMS",
  "name": "Quality Check Technician view Table",
  "owner": "harpreet.kg@anantdv.com",
  "permissions": [],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

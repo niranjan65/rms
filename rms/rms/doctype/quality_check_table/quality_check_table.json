@@ -24,8 +24,11 @@
   "quality_check_pass",
   "employee_name",
   "quality_check_assigned_to_name",
-  "tat",
-  "receiving_date"
+  "repair_date",
+  "receiving_date",
+  "quality_tat",
+  "view_remarks",
+  "view_details"
  ],
  "fields": [
   {
@@ -34,7 +37,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Lot No.",
-   "options": "RMA"
+   "options": "RMA",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -42,7 +46,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "RMA ID",
-   "options": "RMA BIN"
+   "options": "RMA BIN",
+   "read_only": 1
   },
   {
    "columns": 4,
@@ -50,7 +55,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Repaired By",
-   "options": "Employee"
+   "options": "Employee",
+   "read_only": 1
   },
   {
    "columns": 2,
@@ -58,7 +64,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Customer",
-   "options": "Customer"
+   "options": "Customer",
+   "read_only": 1
   },
   {
    "columns": 5,
@@ -66,20 +73,21 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Receiving Remarks",
-   "options": "Damages"
+   "options": "Damages",
+   "read_only": 1
   },
   {
    "columns": 2,
    "fieldname": "serial_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Serial No."
+   "label": "Serial No.",
+   "read_only": 1
   },
   {
    "columns": 3,
    "fieldname": "warranty_status",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Warranty Status",
    "options": "\nYes\nNo"
   },
@@ -88,14 +96,13 @@
    "fieldname": "repair_remarks",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Repair Remarks"
+   "label": "Remarks"
   },
   {
    "columns": 4,
    "default": "0",
    "fieldname": "quality_check_approved",
    "fieldtype": "Check",
-   "in_list_view": 1,
    "label": "Quality Check Approved"
   },
   {
@@ -121,7 +128,7 @@
   {
    "fieldname": "quality_check_assigned_to_name",
    "fieldtype": "Data",
-   "label": "Quality Check Assigned To Name"
+   "label": "Quality Check Assigned To Name  "
   },
   {
    "default": "0",
@@ -132,7 +139,6 @@
   {
    "fieldname": "quality_check_pass",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Quality Check Pass",
    "options": "\nYes\nNo"
   },
@@ -141,47 +147,70 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Repair Status",
-   "options": "Repair Status"
+   "options": "Repair Status",
+   "read_only": 1
   },
   {
    "columns": 7,
    "fieldname": "assigned_to_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
-   "label": "Assigned To Name"
-  },
-  {
-   "columns": 1,
-   "fieldname": "tat",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "TAT"
+   "label": "Repaired By",
+   "read_only": 1
   },
   {
    "fieldname": "receiving_date",
    "fieldtype": "Datetime",
    "in_list_view": 1,
-   "label": "Receiving Date"
+   "label": "Receiving Date",
+   "read_only": 1
   },
   {
    "columns": 4,
    "fieldname": "quality_check_done_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
    "label": "Quality Check Done date"
+  },
+  {
+   "fetch_from": "rma_id.total_quality_time",
+   "fieldname": "quality_tat",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Quality Tat",
+   "read_only": 1
+  },
+  {
+   "fieldname": "repair_date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Repair Date"
+  },
+  {
+   "fieldname": "view_remarks",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "View Remarks"
+  },
+  {
+   "fieldname": "view_details",
+   "fieldtype": "Button",
+   "label": "View Details"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-09-04 17:15:27.309675",
- "modified_by": "harpreet.kg@anantdv.com",
+ "modified": "2026-07-02 13:29:55.276315",
+ "modified_by": "Administrator",
  "module": "RMS",
  "name": "Quality Check table",
  "owner": "shresthangsu.c@anantdv.com",
  "permissions": [],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
